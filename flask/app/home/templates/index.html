@@ -1,0 +1,46 @@
+{% extends "base_site.html" %}
+
+{% block title %} Welcome {% endblock title %}
+
+{% block stylesheets %}
+  {{ super() }}
+{% endblock stylesheets %}
+
+{% block content %}
+
+{% include "tiles.html" %}
+
+<br>        
+<div class="row-auto text-center">
+  <h1>Black & White <b> Data</b> </h1>
+</div>
+
+<div class="row-auto text-center">
+  <div class="text-muted"> All kind of data visualizations and more  </div>
+</div>
+  
+<div class="container">
+  <br>
+
+  <legend class="border-bottom mb-4">Welcome</legend>
+  Black & White <b>Data</b> is a blog for data visualization. I will show you all kind of data. Funny data, interesting data and some data, that might make you think.
+
+  <br> <br>
+  I wish you a pleasant visit here on my blog and with all the data. If there is data you would like to see a visualization or you just want to give feedback, don't hesitate to <br> 
+  <br><a href="{{ url_for('contact_blueprint.index')}}" class="btn btn-primary" role="button" aria-pressed="true"><i class="fas fa-envelope"></i>&nbsp; Contact Me</a> <br><br>
+  I am doing my best to get back to you. <br>
+  Best Regards,
+  <br>
+  <br>
+  <div class="container">
+    <div class="signature">
+      Daniel
+    </div>  
+  </div>
+</div>
+</div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ super()}}
+{% endblock javascripts %}

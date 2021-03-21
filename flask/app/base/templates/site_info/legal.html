@@ -1,0 +1,50 @@
+{% extends "base_site.html" %}
+
+{% block title %} Legal Notice {% endblock title %}
+
+{% block stylesheets %}
+  {{ super() }}
+{% endblock stylesheets %}
+
+{% block content %}
+<br>
+
+<div class="content-section">
+    <h1 class="display-7">Legal Notice</h1>
+    <h3>
+        <br>
+        Presented by:<br>
+    </h3>
+        
+    <p>
+        Black & White Data <br>
+        Daniel Schneider <br>
+        Oberjesinger Street 1 <br>
+        71154 Nufringen <br>
+        Germany <br>
+    </p>
+    <h3>
+        Responsible for content:
+    </h3>
+    <p>
+        Daniel Schneider <br>
+        Private person <br>
+        Oberjesinger Street 1 <br>
+        71154 Nufringen <br>
+        Germany <br>
+    </p>
+
+    <hr class="my-4">
+    <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="{{ url_for( 'contact_blueprint.index') }}" role="button"> <span class="fas fa-envelope"></span> Contact Us</a>
+    </p>
+
+</div>
+
+{% endblock content %}
+
+{% block javascripts %}
+  {{ super() }}
+{% endblock javascripts %}
+

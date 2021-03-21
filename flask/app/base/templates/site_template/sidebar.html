@@ -1,0 +1,81 @@
+<div class="sidebar-header">
+
+  <div class="container">
+    <div class="row align-items-center">
+          <h5>Black & White  <br/> <b> Data</b></h5>     
+    </div>
+
+    <div class="row">
+        <img src="/static/images/img.png" class="img-fluid" alt="Responsive image">       
+    </div>
+  </div>
+
+</div>
+
+<ul class="list-group">
+  
+  <li><a href="{{ url_for( 'home_blueprint.index') }}"><i class="fa fa-home"></i> Home <span></span></a></li>
+  <li> <i class="fa fa-wrench"></i> Tools <span></span></li>
+
+
+  <li>
+      <a href="#portfolioSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Portfolio </a>
+      <ul class="collapse list-unstyled" id="portfolioSubmenu">
+          <li>
+              <a href="{{ url_for( 'DashExample_blueprint.app1_template') }}">Rebalancing</a>
+          </li>
+          <li>
+              <a href="{{ url_for( 'DashExample_blueprint.app2_template') }}">Correlation</a>
+          </li>
+      </ul>
+  </li>
+
+  <li>
+    <a href="#savingSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Saving </a>
+    <ul class="collapse list-unstyled" id="savingSubmenu">
+        <li>
+            <a href="{{ url_for( 'DashExample_blueprint.app1_template') }}">How much?</a>
+        </li>
+        <li>
+            <a href="{{ url_for( 'DashExample_blueprint.app2_template') }}">How long?</a>
+        </li>
+        <li>
+          <a href="{{ url_for( 'DashExample_blueprint.app2_template') }}">Final Capital?</a>
+        </li>
+        <li>
+          <a href="{{ url_for( 'DashExample_blueprint.app2_template') }}">Profit?</a>
+        </li>
+     
+    </ul>
+  </li>
+
+  <li>
+    <a href="#houseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Household </a>
+    <ul class="collapse list-unstyled" id="houseSubmenu">
+        <li>
+            <a href="{{ url_for( 'DashExample_blueprint.app1_template') }}">Energy</a>
+        </li>
+        <li>
+            <a href="{{ url_for( 'DashExample_blueprint.app2_template') }}">Engery & Water</a>
+        </li>
+    </ul>
+  </li>
+
+  
+  {% if current_user.is_authenticated %}
+  <li>
+      <a href="#settingsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-cogs"></i> Settings </a>
+      <ul class="collapse list-unstyled" id="settingsSubmenu">
+        <li><a href=" {{ url_for_security('change_password') }} ">Change Password</a></li>
+        {% if current_user.has_role('admin') %}
+        <li><a href="/admin">Admin</a></li>
+        {% endif %}
+      </ul>
+  </li>
+  {% endif %}
+
+  <li><a href="{{ url_for( 'contact_blueprint.index') }}"><i class="fa fa-envelope"></i> Contact <span></span></a></li>
+
+  <li><a href="{{ url_for( 'base_blueprint.about') }}"><i class="fa fa-info-circle"></i> About <span></span></a></li>
+
+</ul>

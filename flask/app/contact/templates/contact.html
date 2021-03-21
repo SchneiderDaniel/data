@@ -1,0 +1,29 @@
+{% extends "base_site.html" %}
+{% from "security/_macros.html" import render_field_with_errors, render_field, render_field_errors, render_recaptcha %}
+
+{% block title %} Contact {% endblock title %}
+
+{% block stylesheets %}
+  {{ super() }}
+{% endblock stylesheets %}
+
+{% block content %}
+
+<h1>{{ _fsdomain('Contact Us') }}</h1>
+<form action="{{ url_for('contact_blueprint.index') }}" method="POST" name="contact_form">
+{{ contact_form.hidden_tag() }}
+{{ render_field_with_errors(contact_form.name, class='form-control', placeholder='What is your name?') }}
+{{ render_field_with_errors(contact_form.email, class='form-control', placeholder='Enter your E-Mail') }}
+{{ render_field_with_errors(contact_form.body, class='form-control', placeholder='Enter your message, question or request') }}
+{{ render_recaptcha(contact_form.recaptcha)}}
+{{ render_field_errors(contact_form.csrf_token) }}
+
+
+{{ render_field(contact_form.submit, class="btn btn-outline-info")}}
+</form>
+
+{% endblock content %}
+
+{% block javascripts %}
+  {{ super() }}
+{% endblock javascripts %}
