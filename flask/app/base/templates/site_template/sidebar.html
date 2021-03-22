@@ -15,51 +15,8 @@
 <ul class="list-group">
   
   <li><a href="{{ url_for( 'home_blueprint.index') }}"><i class="fa fa-home"></i> Home <span></span></a></li>
-  <li> <i class="fa fa-wrench"></i> Tools <span></span></li>
 
-
-  <li>
-      <a href="#portfolioSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Portfolio </a>
-      <ul class="collapse list-unstyled" id="portfolioSubmenu">
-          <li>
-              <a href="{{ url_for( 'DashExample_blueprint.app1_template') }}">Rebalancing</a>
-          </li>
-          <li>
-              <a href="{{ url_for( 'DashExample_blueprint.app2_template') }}">Correlation</a>
-          </li>
-      </ul>
-  </li>
-
-  <li>
-    <a href="#savingSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Saving </a>
-    <ul class="collapse list-unstyled" id="savingSubmenu">
-        <li>
-            <a href="{{ url_for( 'DashExample_blueprint.app1_template') }}">How much?</a>
-        </li>
-        <li>
-            <a href="{{ url_for( 'DashExample_blueprint.app2_template') }}">How long?</a>
-        </li>
-        <li>
-          <a href="{{ url_for( 'DashExample_blueprint.app2_template') }}">Final Capital?</a>
-        </li>
-        <li>
-          <a href="{{ url_for( 'DashExample_blueprint.app2_template') }}">Profit?</a>
-        </li>
-     
-    </ul>
-  </li>
-
-  <li>
-    <a href="#houseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Household </a>
-    <ul class="collapse list-unstyled" id="houseSubmenu">
-        <li>
-            <a href="{{ url_for( 'DashExample_blueprint.app1_template') }}">Energy</a>
-        </li>
-        <li>
-            <a href="{{ url_for( 'DashExample_blueprint.app2_template') }}">Engery & Water</a>
-        </li>
-    </ul>
-  </li>
+  <li><a href="{{ url_for( 'math_blueprint.app4_template') }}"><i class="fa fa-calculator"></i> Math <span></span></a></li>
 
   
   {% if current_user.is_authenticated %}

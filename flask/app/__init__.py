@@ -6,7 +6,7 @@ from flask_admin.contrib.sqla import ModelView
 from flask_admin import expose
 from importlib import import_module
 from .models import User, Role, RolesUsers
-from Dashapps import Dash_App1, Dash_App2, Dash_App3
+from Dashapps import Dash_App1, Dash_App2, Dash_App3, Dash_App4
 from os import path
 import logging
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -36,7 +36,7 @@ def init_admin(app):
     admin.add_view(MyAdminView(Role, db_session))
 
 def register_blueprints(app):
-    for module_name in ('base', 'home', 'tools', 'contact'):
+    for module_name in ('base', 'home', 'datamath','tools', 'contact'):
         module = import_module('app.{}.routes'.format(module_name))
         app.register_blueprint(module.blueprint)
 
@@ -107,4 +107,5 @@ def create_app(config, selenium=False):
     app = Dash_App1.Add_Dash(app)
     app = Dash_App2.Add_Dash(app)
     app = Dash_App3.Add_Dash(app)
+    app = Dash_App4.Add_Dash(app)
     return app
