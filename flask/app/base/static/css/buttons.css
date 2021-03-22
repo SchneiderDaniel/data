@@ -61,3 +61,15 @@
     border-color: #000000 !important;
     background-color: #000000 !important
 }
+
+.dropdown-item {
+    background-color: white !important;
+    margin-left: 10px;
+    margin-top: 5px;
+ 
+}
+
+.dropdown-item:hover {
+    border-color: #000000 !important;
+    border-radius: 15px;
+}
