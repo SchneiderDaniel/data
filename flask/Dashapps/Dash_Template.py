@@ -17,7 +17,7 @@ from flask import request
 import locale
 
 
-url_base = '/dash/app4/' 
+url_base = '/dash/appX/' 
 
 def description_card():
     return html.Div(
