@@ -47,6 +47,10 @@ def get_link_list(link_list, name):
     list_group = dbc.ListGroup(children=[])
 
     if len(link_list)==0:
+        list_group.children.append(
+                dbc.ListGroupItem(
+                    "No " + name + " available" )
+            )
         return list_group
     else:
         for i in range(len(link_list)):
