@@ -16,7 +16,9 @@ def app2_template():
     return render_template('app2.html', dash_url = Dash_App2.url_base)
 
 
-@blueprint.route('/impactoffondcosts')
+@blueprint.route('/impact-of-fond-costs')
+@login_required
+@roles_accepted('admin')
 def app3_template():
     return render_template('app3.html', dash_url = Dash_App3.url_base)
 
