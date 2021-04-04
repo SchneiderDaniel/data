@@ -19,11 +19,11 @@ import locale
 
 url_base = '/dash/app8/' 
 
+
 df = pd.read_csv('app_data/processed/0008.csv', dtype={'Jurisdiction of Occurrence': str,'Year': int,'Week': int,'Cause': int})
 
 chart_groups = df.groupby(by='Year')
 
-print(chart_groups)
 
 chart_data = []
 
@@ -32,9 +32,6 @@ chart_colors=['orange', 'blue', 'green', 'black', 'grey', 'purple', 'red']
 
 for group, dataframe in chart_groups:
     dataframe = dataframe.sort_values(by=['Week'])
-    print(dataframe)
-    # print('______')
-    # print(dataframe.Cause.tolist())
 
     trace = go.Scatter(x=dataframe.Week.tolist(), 
                        y=dataframe.Cause.tolist(),
@@ -55,7 +52,7 @@ fig = go.Figure(data=chart_data, layout=chart_layout)
 def description_card():
     return html.Div(
         id="description_card",
-        children = [dcc.Markdown(''' What you see below are the deaths in the USA in year 2020 in comparison to all the years before. We see how the pandamic affected the number over deaths per week in 2020. ''')],
+        children = [dcc.Markdown(''' What you see below are the deaths in the USA in year 2020 in comparison to all the years before. We see how the pandamic affected the number of deaths per week in 2020. ''')],
     style={
         'backgroundColor': colors['background'],
     })
