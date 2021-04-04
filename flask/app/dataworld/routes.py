@@ -13,6 +13,6 @@ def app8_template():
 @blueprint.route('/overview')
 # @login_required
 def world_card_template():
-    return render_template('cards.html')
+    return render_template('world_cards.html')
 
 

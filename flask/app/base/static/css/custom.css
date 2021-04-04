@@ -191,6 +191,11 @@ a.article, a.article:hover {
     font-size: xx-large !important; 
 }
 
+
+.card:hover {
+    transform: scale(1.01);
+}
+
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */

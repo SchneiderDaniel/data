@@ -1,17 +1,16 @@
 {% extends "base_site.html" %}
 
-{% block title %} Corona in 2020 {% endblock title %}
+{% block title %} Crypto Overview {% endblock title %}
 
 {% block stylesheets %}
   {{ super() }}
 {% endblock stylesheets %}
 
 {% block content %}
-<div style="width: 100%"> 
 
 
 <div class="card-columns">
-    <div class="card">
+    <!-- <div class="card">
       <img class="card-img-top" src="" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Card title that wraps to a new line</h5>
@@ -27,16 +26,18 @@
           </small>
         </footer>
       </blockquote>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="" alt="Card image cap">
+    </div> -->
+    <div class="card" >
+        
+      <img class="card-img-top" src="{{ url_for('static', filename='images/cards/virus.png') }}" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <h5 class="card-title"> Crypto </h5>
+        <p class="card-text">AG ADG ADG AG ATG QET ADGAEZQEW  AGA GHQE ZAS GEA </p>
+        <a href="{{ url_for( 'crypto_blueprint.app5_template') }}" class="btn btn-primary" role="button" aria-pressed="true"><i class="fas fa-play-circle"></i>&nbsp; Start</a>
+        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
       </div>
     </div>
-    <div class="card text-center">
+    <!-- <div class="card text-center">
       <div class="card-body">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -62,11 +63,9 @@
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
-    </div>
+    </div> -->
   </div>
 
-
-</div>
 {% endblock content %}
 
 {% block javascripts %}

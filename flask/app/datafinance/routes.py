@@ -19,3 +19,9 @@ def app2_template():
 @blueprint.route('/impactoffondcosts')
 def app3_template():
     return render_template('app3.html', dash_url = Dash_App3.url_base)
+
+
+@blueprint.route('/overview')
+# @login_required
+def finance_card_template():
+    return render_template('finance_cards.html')

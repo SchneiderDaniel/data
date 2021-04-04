@@ -9,3 +9,7 @@ from flask_security import login_required, roles_accepted
 def app7_template():
     return render_template('app7.html', dash_url = Dash_App7.url_base)
 
+@blueprint.route('/overview')
+# @login_required
+def it_card_template():
+    return render_template('it_cards.html')
