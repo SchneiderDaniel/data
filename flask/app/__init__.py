@@ -36,7 +36,7 @@ def init_admin(app):
     admin.add_view(MyAdminView(Role, db_session))
 
 def register_blueprints(app):
-    for module_name in ('base', 'home', 'datamath','finance', 'contact', 'datacrypto', 'dataentertain', 'datait', 'dataworld'):
+    for module_name in ('base', 'home', 'datamath','datafinance', 'contact', 'datacrypto', 'dataentertain', 'datait', 'dataworld'):
         module = import_module('app.{}.routes'.format(module_name))
         app.register_blueprint(module.blueprint)
 
