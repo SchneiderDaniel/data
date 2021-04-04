@@ -28,7 +28,8 @@
 
   {% if current_user.is_authenticated %}
     {% if current_user.has_role('admin') %}
-    <li>
+    <li><a href="{{ url_for( 'finance_blueprint.finance_card_template') }}"><i class="fa fa-chart-bar"></i> Finance  <span></span></a></li>
+    <!-- <li>
       <a href="#portfolioSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-chart-bar"></i> Finance </a>
       <ul class="collapse list-unstyled" id="portfolioSubmenu">
           <li>
@@ -41,7 +42,7 @@
             <a href="{{ url_for( 'finance_blueprint.app3_template') }}">Impact</a>
           </li>
       </ul>
-    </li>
+    </li> -->
     {% endif %}
   {% endif %}
   
