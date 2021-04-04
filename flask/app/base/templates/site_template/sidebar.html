@@ -26,8 +26,11 @@
 
   <li><a href="{{ url_for( 'crypto_blueprint.crypto_card_template') }}"><i class="fa fa-coins"></i> Crypto <span></span></a></li>
 
-  <li><a href="{{ url_for( 'finance_blueprint.finance_card_template') }}"><i class="fa fa-chart-bar"></i> Finance  <span></span></a></li>
-
+  {% if current_user.is_authenticated %}
+    {% if current_user.has_role('admin') %}
+      <li><a href="{{ url_for( 'finance_blueprint.finance_card_template') }}"><i class="fa fa-chart-bar"></i> Finance  <span></span></a></li>
+    {% endif %}
+  {% endif %}
   
   {% if current_user.is_authenticated %}
   <li>

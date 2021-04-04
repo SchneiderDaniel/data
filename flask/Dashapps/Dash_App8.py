@@ -21,7 +21,8 @@ url_base = '/dash/app8/'
 
 data_sources = [
     "https://data.cdc.gov/NCHS/Weekly-Counts-of-Deaths-by-State-and-Select-Causes/3yf8-kanr",
-    "https://data.cdc.gov/NCHS/Weekly-Counts-of-Deaths-by-State-and-Select-Causes/muzy-jte6"
+    "https://data.cdc.gov/NCHS/Weekly-Counts-of-Deaths-by-State-and-Select-Causes/muzy-jte6",
+    "https://www.reddit.com/r/dataisbeautiful/comments/mjdmln/oc_weekly_deaths_from_all_causes_by_year_in_the/"
 ]
 
 data_licenses = [
