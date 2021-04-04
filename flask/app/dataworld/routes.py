@@ -4,7 +4,7 @@ from Dashapps import Dash_App8
 from flask_security import login_required, roles_accepted
 
 
-@blueprint.route('/corona-deaths-per-week')
+@blueprint.route('/corona-deaths-per-week-in-2020')
 # @login_required
 def app8_template():
     return render_template('app8.html', dash_url = Dash_App8.url_base)
