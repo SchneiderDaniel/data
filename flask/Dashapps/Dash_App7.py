@@ -17,7 +17,7 @@ from flask import request
 import locale
 
 
-url_base = '/dash/app4/' 
+url_base = '/dash/app7/' 
 
 def description_card():
     return html.Div(
@@ -32,7 +32,7 @@ def description_card():
 # The Layout
 layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor': colors['background']}, children=[
     html.H1(
-        children='XXXXXXXX4',
+        children='XXXXXXXX7',
         style={
             'textAlign': 'center',
             'color': colors['text'],
