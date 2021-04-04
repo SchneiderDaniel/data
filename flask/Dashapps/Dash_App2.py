@@ -23,6 +23,12 @@ import locale
 
 url_base = '/dash/app2/'
 
+data_sources = [
+]
+
+data_licenses = [
+]
+
 def get_dummy_df():
     d = {'-': [0, 0], '- ': [0, 0]}
     df = pd.DataFrame(data=d)
@@ -217,7 +223,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         data=df_corr.to_dict('records'),
     ),
     html.Br(),
-    html.Div(children=warning_card(), style={
+    html.Div(children=warning_card(data_sources,data_licenses), style={
         'textAlign': 'left',
         'color': colors['text'],
         'backgroundColor': colors['background']

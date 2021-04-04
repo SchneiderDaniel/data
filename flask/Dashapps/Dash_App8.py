@@ -19,6 +19,15 @@ import locale
 
 url_base = '/dash/app8/' 
 
+data_sources = [
+    "https://data.cdc.gov/NCHS/Weekly-Counts-of-Deaths-by-State-and-Select-Causes/3yf8-kanr",
+    "https://data.cdc.gov/NCHS/Weekly-Counts-of-Deaths-by-State-and-Select-Causes/muzy-jte6"
+]
+
+data_licenses = [
+    "https://www.usa.gov/government-works"
+]
+
 
 df = pd.read_csv('app_data/processed/0008.csv', dtype={'Jurisdiction of Occurrence': str,'Year': int,'Week': int,'Cause': int})
 
@@ -82,7 +91,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
     html.Br(),
     html.Hr(className="my-2"),
     html.Br(),
-    html.Div(children=warning_card(), style={
+    html.Div(children=warning_card(data_sources,data_licenses), style={
         'textAlign': 'left',
         'color': colors['text'],
         'backgroundColor': colors['background']

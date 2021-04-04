@@ -19,6 +19,12 @@ import locale
 
 url_base = '/dash/app3/' 
 
+data_sources = [
+]
+
+data_licenses = [
+]
+
 def description_card():
     return html.Div(
         id="description_card",
@@ -244,7 +250,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
     html.Br(),
     html.Hr(className="my-2"),
     html.Br(),
-    html.Div(children=warning_card(), style={
+    html.Div(children=warning_card(data_sources,data_licenses), style={
         'textAlign': 'left',
         'color': colors['text'],
         'backgroundColor': colors['background']
