@@ -25,6 +25,12 @@ b {
     
 }
 
+.focusit a{
+    color: red;
+    transform: scale(1.2);
+    background: #fafafa;
+}
+
 .b_black {
     color: black;
     font-weight: bold;
