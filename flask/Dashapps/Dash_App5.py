@@ -30,12 +30,19 @@ data_licenses = [
 
 df = pd.read_csv('app_data/processed/0005.csv', dtype={'Year': int,'Name': str,'Color': str})
 
+
+minYear = df['Year'].min()
+maxYear = df['Year'].max()
+marks_dict = {}
+for i in range(minYear,maxYear+1):
+    marks_dict[i]=str(i)
+
+
+
+
 mask = (df['Year']==2016)
 df=df.loc[mask]
-
 df = df.sort_values('Market Cap', ascending=True)
-
-
 fig = go.Figure(go.Bar(
             x=df['Market Cap'].tolist(),
             y=df['Name'].tolist(),
@@ -78,6 +85,18 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         'color': colors['text'],
         'backgroundColor': colors['background']
     }),
+    html.Br(),
+    html.Br(),
+    dcc.Slider(
+        id='my-slider',
+        min=minYear,
+        max=maxYear,
+        step=1,
+        value=maxYear,
+        updatemode='drag',
+        marks = marks_dict,
+        tooltip = { 'always_visible': True },
+    ),
     dcc.Graph(
         id='example-graph-2',
         figure=fig
