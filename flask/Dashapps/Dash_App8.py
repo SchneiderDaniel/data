@@ -32,6 +32,9 @@ data_licenses = [
 
 df = pd.read_csv('app_data/processed/0008.csv', dtype={'Jurisdiction of Occurrence': str,'Year': int,'Week': int,'Cause': int})
 
+
+
+
 chart_groups = df.groupby(by='Year')
 
 
