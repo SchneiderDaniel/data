@@ -33,6 +33,8 @@ df = pd.read_csv('app_data/processed/0005.csv', dtype={'Year': int,'Name': str,'
 mask = (df['Year']==2016)
 df=df.loc[mask]
 
+df = df.sort_values('Market Cap', ascending=True)
+
 
 fig = go.Figure(go.Bar(
             x=df['Market Cap'].tolist(),
