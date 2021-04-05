@@ -27,10 +27,36 @@ data_licenses = [
     "https://creativecommons.org/publicdomain/zero/1.0/"
 ]
 
+
+df = pd.read_csv('app_data/processed/0005.csv', dtype={'Year': int,'Name': str,'Color': str})
+
+mask = (df['Year']==2016)
+df=df.loc[mask]
+
+
+fig = go.Figure(go.Bar(
+            x=df['Market Cap'].tolist(),
+            y=df['Name'].tolist(),
+            marker=dict(color=df['Color']),
+            orientation='h'))
+
+fig.update_layout(
+    height=800,
+    margin=dict(
+        l=50,
+        r=0,
+        b=100,
+        t=100,
+        pad=4
+    )
+)
+
+
+
 def description_card():
     return html.Div(
         id="description_card",
-        children = [dcc.Markdown(''' On this diagram you see the Top 20 Cryptocurrencies of the past.''')],
+        children = [dcc.Markdown(''' On this diagram you see the Top 20 Cryptocurrencies of the past few years. In these charts you will see the dominance of bitcoin. One says that this shows the irrelevance of all the other coins. And the others say that is shows the potential that is still hidden in these other coins. You choose your side ;)''')],
     style={
         'backgroundColor': colors['background'],
     })
@@ -50,6 +76,10 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         'color': colors['text'],
         'backgroundColor': colors['background']
     }),
+    dcc.Graph(
+        id='example-graph-2',
+        figure=fig
+    ),
     
     html.Br(),
     html.Hr(className="my-2"),

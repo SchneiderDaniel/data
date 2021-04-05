@@ -21,7 +21,7 @@ def warning_card(data_sources,data_licenses):
             [
                 html.H3("Information",style={'color': colors['info']}),
                 html.P(
-                    "All contents on this webpage are for entertainment and information. We source our data from freely available data on the internet. Below you can find a list of all the sources that were used to create the content on this exact page. Morevoer, we also add the license references, in case they are available.  "
+                    "All contents on this webpage are for entertainment and information. We source our data from freely available data on the internet. Below you can find a list of all the sources that were used to create the content on this exact page. Moreover, we also add the license references, in case they are available.  "
                     ,
                     className="lead",
                 ),
