@@ -20,25 +20,25 @@ import locale
 url_base = '/dash/app5/' 
 
 data_sources = [
+    "https://www.kaggle.com/georgezakharov/historical-data-on-the-trading-of-cryptocurrencies"
 ]
 
 data_licenses = [
+    "https://creativecommons.org/publicdomain/zero/1.0/"
 ]
 
 def description_card():
     return html.Div(
         id="description_card",
-        children = [dcc.Markdown(''' Test 1234 as dkanfk jnasfn aösfn asnf ansfä nafl naäsfnm älakfns äolk''')],
+        children = [dcc.Markdown(''' On this diagram you see the Top 20 Cryptocurrencies of the past.''')],
     style={
         'backgroundColor': colors['background'],
     })
 
-
-
 # The Layout
 layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor': colors['background']}, children=[
     html.H1(
-        children='XXXXXXXX5',
+        children='Top 20 Cryptocurrencies',
         style={
             'textAlign': 'center',
             'color': colors['text'],
