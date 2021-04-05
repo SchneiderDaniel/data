@@ -56,7 +56,7 @@ def get_link_list(link_list, name):
         for i in range(len(link_list)):
             list_group.children.append(
                 dbc.ListGroupItem(
-                    name + " #" +  str(i), href=link_list[i], target='_blank'
+                    name + " #" +  str(i+1), href=link_list[i], target='_blank'
                 )
             )
     return list_group
