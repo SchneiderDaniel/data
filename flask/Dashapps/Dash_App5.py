@@ -72,7 +72,7 @@ def description_card():
 # The Layout
 layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor': colors['background']}, children=[
     html.H1(
-        children='Top 20 Cryptocurrencies',
+        children='Top 20 Cryptocurrencies in $',
         style={
             'textAlign': 'center',
             'color': colors['text'],
