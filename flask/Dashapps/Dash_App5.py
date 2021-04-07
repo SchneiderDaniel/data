@@ -144,7 +144,7 @@ def Add_Dash(server):
             request_locale_utf8 = 'de_DE.utf8'
         locale.setlocale(locale.LC_ALL, request_locale_utf8)
 
-        print(request_locale_utf8)
+        # print(request_locale_utf8)
 
         mask = (df['Year']==value)
         df_toDraw=df.loc[mask]
