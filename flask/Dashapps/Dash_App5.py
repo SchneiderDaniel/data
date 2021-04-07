@@ -95,7 +95,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         value=maxYear,
         updatemode='drag',
         marks = marks_dict,
-        tooltip = { 'always_visible': True },
+        # tooltip = { 'always_visible': True },
     ),
     dcc.Graph(
         id='example-graph-2',
