@@ -126,11 +126,25 @@ def Add_Dash(server):
 
 
     @app.callback(
-        Output('ty-figure', 'figure'),
+        [Output('ty-figure', 'figure'),
+        Output('ty-figure', 'config')],
         Input('ty-slider', 'value')
     )
     def update_graph(value):
         # print(value)
+
+        request_locale  = request.accept_languages.best_match(['en_US','de_DE'])
+        if (request_locale=='en_US'): 
+            dash_locale = 'en'
+            sep_locale = "."
+            request_locale_utf8 = 'en_US.utf8'
+        else:
+            dash_locale = 'de'
+            sep_locale = ","
+            request_locale_utf8 = 'de_DE.utf8'
+        locale.setlocale(locale.LC_ALL, request_locale_utf8)
+
+        print(request_locale_utf8)
 
         mask = (df['Year']==value)
         df_toDraw=df.loc[mask]
@@ -140,6 +154,8 @@ def Add_Dash(server):
                     y=df_toDraw['Name'].tolist(),
                     marker=dict(color=df_toDraw['Color']),
                     orientation='h'))
+
+        # fig_toDraw.update_traces(texttemplate='%{text:.2s}',textposition='outside',textfont_size=12)
 
         fig_toDraw.update_layout(
             height=800,
@@ -157,7 +173,9 @@ def Add_Dash(server):
             range=[0,200000000000]
         )
 
-        return fig_toDraw
+       
+
+        return fig_toDraw,dict(locale=dash_locale)
 
 
 
