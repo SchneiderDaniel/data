@@ -41,12 +41,12 @@ for i in range(minYear,maxYear+1):
 
 
 mask = (df['Year']==2016)
-df=df.loc[mask]
-df = df.sort_values('Market Cap', ascending=True)
+df_toDraw=df.loc[mask]
+df_toDraw = df_toDraw.sort_values('Market Cap', ascending=True)
 fig = go.Figure(go.Bar(
-            x=df['Market Cap'].tolist(),
-            y=df['Name'].tolist(),
-            marker=dict(color=df['Color']),
+            x=df_toDraw['Market Cap'].tolist(),
+            y=df_toDraw['Name'].tolist(),
+            marker=dict(color=df_toDraw['Color']),
             orientation='h'))
 
 fig.update_layout(
@@ -59,7 +59,6 @@ fig.update_layout(
         pad=4
     )
 )
-
 
 
 def description_card():
@@ -88,7 +87,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
     html.Br(),
     html.Br(),
     dcc.Slider(
-        id='my-slider',
+        id='ty-slider',
         min=minYear,
         max=maxYear,
         step=1,
@@ -98,7 +97,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         # tooltip = { 'always_visible': True },
     ),
     dcc.Graph(
-        id='example-graph-2',
+        id='ty-figure',
         figure=fig
     ),
     
@@ -124,5 +123,46 @@ def Add_Dash(server):
     app = Dash(server=server, url_base_pathname=url_base, external_stylesheets = [dbc.themes.BOOTSTRAP], external_scripts = ["https://cdn.plot.ly/plotly-locale-de-latest.js"], meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}])
     
     apply_layout_with_auth(app, layout)
+
+
+    @app.callback(
+        Output('ty-figure', 'figure'),
+        Input('ty-slider', 'value')
+    )
+    def update_graph(value):
+        # print(value)
+
+        mask = (df['Year']==value)
+        df_toDraw=df.loc[mask]
+        df_toDraw = df_toDraw.sort_values('Market Cap', ascending=True)
+        fig_toDraw = go.Figure(go.Bar(
+                    x=df_toDraw['Market Cap'].tolist(),
+                    y=df_toDraw['Name'].tolist(),
+                    marker=dict(color=df_toDraw['Color']),
+                    orientation='h'))
+
+        fig_toDraw.update_layout(
+            height=800,
+            margin=dict(
+                l=50,
+                r=0,
+                b=100,
+                t=100,
+                pad=4
+            )
+        )
+
+        fig_toDraw.update_xaxes(
+            tickvals=[0,50000000000,100000000000,150000000000,200000000000],
+            range=[0,200000000000]
+        )
+
+        return fig_toDraw
+
+
+
+
+
+        
 
     return app.server
