@@ -55,8 +55,11 @@ for group, dataframe in chart_groups:
 
 chart_layout =  go.Layout(xaxis={'title': 'Week of the Year'},
                     yaxis={'title': 'Deaths per Week'},
-                    margin={'l': 40, 'b': 40, 't': 50, 'r': 50},
-                    legend={'orientation': 'h'},
+                    margin={'l': 0, 'b': 50, 't': 50, 'r': 0},
+                    legend = dict( 
+                            orientation="h", # Looks much better horizontal than vertical
+                            y=-0.15
+                            ),
                     hovermode='closest')
 
 fig = go.Figure(data=chart_data, layout=chart_layout)  

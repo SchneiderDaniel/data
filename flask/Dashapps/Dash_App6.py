@@ -39,7 +39,7 @@ fig.update_layout(legend=dict(
     y=1.02,
     xanchor="right",
     x=1
-),margin={'r': 1,'l':1},yaxis={'visible': False})
+),margin={'r': 1,'l':1},yaxis={'visible': True})
 
 def description_card():
     return html.Div(
