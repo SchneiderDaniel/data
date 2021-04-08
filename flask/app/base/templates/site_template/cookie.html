@@ -11,7 +11,21 @@
 <script type="text/javascript">
     var fn = function () {
         console.log(document.cookie);
-        document.cookie = "my_cookie_consent=true;path='/';domain=blackandwhitedata.com;max-age=31536000";
+
+        var cookievlaue,
+            cookieexpire,
+            cookiepath,
+            date;
+        
+        cookievalue = true;
+        date = new Date();
+        date.setTime(date.getTime()+3600000);
+        cookieexpire = date.toGMTString();
+
+        cookiepath = "/";
+
+        
+        document.cookie ="my_cookie_consent=" + cookievalue + "; expires=" + cookieexpire + "; path=" + cookiepath;
         document.getElementById('cookie-consent-container').hidden = true;
     };
     document.getElementById('my_cookie_consent').onclick = fn;
