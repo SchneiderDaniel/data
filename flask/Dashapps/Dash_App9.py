@@ -17,15 +17,16 @@ from flask import request
 import locale
 
 
-url_base = '/dash/appX/' 
+url_base = '/dash/app9/' 
 
 
 
 data_sources = [
-   
+    "https://www.kaggle.com/ajaypalsinghlo/world-happiness-report-2021"
+]   
 
 data_licenses = [
-    
+    "https://creativecommons.org/publicdomain/zero/1.0/"
 ]
 
 
@@ -43,7 +44,7 @@ def description_card():
 # The Layout
 layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor': colors['background']}, children=[
     html.H1(
-        children='XXXXXXXX',
+        children='World Happiness Report Visualization',
         style={
             'textAlign': 'center',
             'color': colors['text'],

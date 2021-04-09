@@ -28,12 +28,21 @@
       </blockquote>
     </div> -->
     <div class="card" >
-        
       <img class="card-img-top" src="{{ url_for('static', filename='images/cards/virus.png') }}" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Deaths in the USA in 2020</h5>
         <p class="card-text">What you will see in this chart, are the deaths in the USA in year 2020 in comparison to all the years before.</p>
         <a href="{{ url_for( 'world_blueprint.app8_template') }}" class="btn btn-primary" role="button" aria-pressed="true"><i class="fas fa-play-circle"></i>&nbsp; Start</a>
+        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+      </div>
+    </div>
+
+    <div class="card" >
+      <img class="card-img-top" src="{{ url_for('static', filename='images/cards/world.png') }}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">World Happiness Report</h5>
+        <p class="card-text">At what places in the world live the most happy people?</p>
+        <a href="{{ url_for( 'world_blueprint.app9_template') }}" class="btn btn-primary" role="button" aria-pressed="true"><i class="fas fa-play-circle"></i>&nbsp; Start</a>
         <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
       </div>
     </div>

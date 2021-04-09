@@ -6,7 +6,7 @@ from flask_admin.contrib.sqla import ModelView
 from flask_admin import expose
 from importlib import import_module
 from .models import User, Role, RolesUsers
-from Dashapps import Dash_App1, Dash_App2, Dash_App3, Dash_App4, Dash_App5, Dash_App6, Dash_App7, Dash_App8
+from Dashapps import Dash_App1, Dash_App2, Dash_App3, Dash_App4, Dash_App5, Dash_App6, Dash_App7, Dash_App8, Dash_App9
 from os import path
 import logging
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -112,4 +112,5 @@ def create_app(config, selenium=False):
     app = Dash_App6.Add_Dash(app)
     app = Dash_App7.Add_Dash(app)
     app = Dash_App8.Add_Dash(app)
+    app = Dash_App9.Add_Dash(app)
     return app

@@ -1,6 +1,6 @@
 from . import blueprint
 from flask import render_template
-from Dashapps import Dash_App8
+from Dashapps import Dash_App8, Dash_App9
 from flask_security import login_required, roles_accepted
 
 
@@ -8,6 +8,11 @@ from flask_security import login_required, roles_accepted
 # @login_required
 def app8_template():
     return render_template('app8.html', dash_url = Dash_App8.url_base)
+
+@blueprint.route('/how-happy-are-people-in-each-country')
+# @login_required
+def app9_template():
+    return render_template('app9.html', dash_url = Dash_App9.url_base)
 
 
 @blueprint.route('/overview')
