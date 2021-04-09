@@ -55,7 +55,10 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         'color': colors['text'],
         'backgroundColor': colors['background']
     }),
-    
+    dcc.Graph(
+        id='ty-figure',
+        figure=fig
+    ),
     html.Br(),
     html.Hr(className="my-2"),
     html.Br(),
