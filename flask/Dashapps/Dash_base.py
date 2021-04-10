@@ -10,6 +10,12 @@ colors = {
     'text': '#000000',
     'warning':'#FF0000',
     'info':'#6e7278',
+    'green1':'#9fb557',
+    'green2':'#76b557',
+    'gray':'#7f8280',
+    'black':'#202121',
+    'lightgray':'#acb5b5'
+
 
 }
 

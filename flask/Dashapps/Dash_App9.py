@@ -9,6 +9,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
+from plotly.subplots import make_subplots
 from .Dash_base import warning_card, colors
 import dash_table
 from datetime import datetime
@@ -24,7 +25,7 @@ url_base = '/dash/app9/'
 
 data_sources = [
     "https://www.kaggle.com/ajaypalsinghlo/world-happiness-report-2021",
-    "https://www.kaggle.com/danielkorth/eda-world-happiness-report-2021"
+    "https://www.kaggle.com/danielkorth/eda-world-happiness-report-2021",
 ]   
 
 data_licenses = [
@@ -71,23 +72,75 @@ fig.update_layout(
         t=50
     )
 )
+###
 
+t1 = df.nlargest(20, 'Ladder score')[::-1]
+fig2 = make_subplots(rows=1, cols=2, 
+                    column_widths=[0.65, 0.35],
+                    subplot_titles=['Top 20 Countries', 'All countries'])
+fig2.append_trace(go.Bar(x=t1['Ladder score'],
+                y=t1['Country name'],
+                orientation='h',
+           
+                marker=dict(
+                    color=colors['gray'],
+                    line=dict(color=colors['black'], width=1)
+                ),
+                        name=''
+               ), 1,1
+             )
 
-top_df = df.sort_values(by=['Ladder score'], ascending=False)[0:20]
-top_list= top_df['Country name'].tolist()
+fig2.append_trace(go.Box(y=df['Ladder score'],
+                        marker_color=colors['lightgray'],
+                        name=''), 1,2)
+fig2.add_vline(x=9,
+              col=1,
+              )
 
-top_items = []
-
-for item in top_list:
-    top_items.append(dbc.ListGroupItem(item))
-
-
+fig2.update_layout(
+    xaxis_range=(6,8),
+    yaxis2_range=(2,8),
+    xaxis = {                              
+    'showgrid': True,
+    'gridcolor' :colors['gray'],
+    'tickfont': {
+        'color': '#333',
+        'size': 12
+      },
+    },
+    yaxis2 = {                              
+    'showgrid': False,
+    # 'mirror': True,
+    # 'automargin':False,
+    'side':'right',
+    'anchor': 'free',
+    'position': 0.95,
+    'gridcolor' :colors['gray'],
+    'tickfont': {
+        'color': '#333',
+        'size': 12
+      },
+    },
+    margin=dict(
+        l=0,
+        r=0,
+        b=50,
+        t=100
+    ),
+    yaxis2_tickvals=[2,3,4,5,6,7, 8],
+    paper_bgcolor='rgb(248, 248, 255)',
+    plot_bgcolor='rgb(248, 248, 255)',
+    showlegend=False,
+    title_text='Top 20 Happiest Countries',
+    title_font_size=22),
+    
+fig2.update_annotations(yshift=5)
 
 
 def description_card():
     return html.Div(
         id="description_card",
-        children = [dcc.Markdown(''' On the map below you see the happiness score mapped onto each country. The results are gathered from the Gallup World Poll. The score is computed based on the answers from people of these countries. Below the map you will also find a list of the Top 20 countries based on the Happiness Score.''')],
+        children = [dcc.Markdown(''' On the map below you see the happiness score mapped onto each country. The results are gathered from the Gallup World Poll. The score is computed based on the answers from people of these countries in 2021. Below the map you will also find a list of the Top 20 countries based on the Happiness Score.''')],
     style={
         'backgroundColor': colors['background'],
     })
@@ -113,10 +166,9 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         id='ty-figure',
         figure=fig
     ),
-    html.P(children='Top 20 Countries'),
-    dbc.ListGroup(
-    
-        top_items
+    dcc.Graph(
+        id='ty-figure2',
+        figure=fig2
     ),
     html.Br(),
     html.Hr(className="my-2"),
