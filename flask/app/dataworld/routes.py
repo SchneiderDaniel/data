@@ -16,6 +16,15 @@ def app9_template():
 def app10_template():
     return render_template('app10.html', dash_url = Dash_App10.url_base)
 
+@blueprint.route('/what-is-the-social-support-worldwide')
+def app11_template():
+    return render_template('app11.html', dash_url = Dash_App11.url_base)
+
+@blueprint.route('/most-generous-people-in-the-world')
+def app12_template():
+    return render_template('app12.html', dash_url = Dash_App12.url_base)
+
+
 
 @blueprint.route('/overview')
 def world_card_template():

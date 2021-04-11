@@ -121,7 +121,7 @@ def create_app(config, selenium=False):
     app_context(app)
    
     all_classes_list = list(itertools.chain(worldclasses,itclasses,entertainclasses,mathclasses,cryptoclasses,financeclasses))
-    # print(all_classes_list)
+    print(all_classes_list)
 
     for single_class in all_classes_list:
         to_Add_App = str_to_class(single_class)
