@@ -24,12 +24,17 @@ def app11_template():
 def app12_template():
     return render_template('app12.html', dash_url = Dash_App12.url_base)
 
-
 @blueprint.route('/highest-freedom-for-making-life-choices-worldwide')
 def app13_template():
-    return render_template('app12.html', dash_url = Dash_App13.url_base)
+    return render_template('app13.html', dash_url = Dash_App13.url_base)
+
+@blueprint.route('/highest-perception-for-corruption-worldwide')
+def app14_template():
+    return render_template('app14.html', dash_url = Dash_App14.url_base)
 
 
+
+####--------###
 
 @blueprint.route('/overview')
 def world_card_template():
