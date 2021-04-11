@@ -24,9 +24,11 @@ import locale
 url_base = '/dash/app2/'
 
 data_sources = [
+    "https://pypi.org/project/yfinance/"
 ]
 
 data_licenses = [
+    "https://pypi.org/search/?c=License+%3A%3A+OSI+Approved+%3A%3A+Apache+Software+License"
 ]
 
 def get_dummy_df():
