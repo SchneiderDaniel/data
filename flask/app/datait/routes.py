@@ -1,6 +1,6 @@
 from . import blueprint
 from flask import render_template
-from Dashapps import Dash_App7
+from Dashapps.it import Dash_App7
 from flask_security import login_required, roles_accepted
 
 

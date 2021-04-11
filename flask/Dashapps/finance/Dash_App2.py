@@ -2,7 +2,7 @@
 
 from dash import Dash
 from dash.dependencies import Input, Output, ALL, State, MATCH, ALLSMALLER, ClientsideFunction
-from .Dash_fun import apply_layout_with_auth,apply_layout_without_auth, load_object, save_object
+from ..Dash_fun import apply_layout_with_auth,apply_layout_without_auth, load_object, save_object
 import dash_core_components as dcc
 import dash_html_components as html
 
@@ -13,9 +13,9 @@ import dash_bootstrap_components as dbc
 import plotly.graph_objs as go
 import numpy as np
 import pandas as pd
-from .Dash_base import warning_card, colors
+from ..Dash_base import warning_card, colors
 import datetime as dt 
-from .compute_util.stockinterface import isTickerValid, getCorrelationMatrix, getPortfolioCorrelation,getCorrelationMatrix_List, getPortfolioCorrelation_List, getTickerDataframesList, getTickerDataframe
+from ..compute_util.stockinterface import isTickerValid, getCorrelationMatrix, getPortfolioCorrelation,getCorrelationMatrix_List, getPortfolioCorrelation_List, getTickerDataframesList, getTickerDataframe
 from flask import request
 import locale
 

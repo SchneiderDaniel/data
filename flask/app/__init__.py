@@ -6,7 +6,18 @@ from flask_admin.contrib.sqla import ModelView
 from flask_admin import expose
 from importlib import import_module
 from .models import User, Role, RolesUsers
-from Dashapps import Dash_App1, Dash_App2, Dash_App3, Dash_App4, Dash_App5, Dash_App6, Dash_App7, Dash_App8, Dash_App9
+from Dashapps.world import *
+from Dashapps.world import __all__ as worldclasses
+from Dashapps.it import *
+from Dashapps.it import __all__ as itclasses
+from Dashapps.entertain import *
+from Dashapps.entertain import __all__ as entertainclasses
+from Dashapps.math import *
+from Dashapps.math import __all__ as mathclasses
+from Dashapps.crypto import *
+from Dashapps.crypto import __all__ as cryptoclasses 
+from Dashapps.finance import * 
+from Dashapps.finance import __all__ as financeclasses 
 from os import path
 import logging
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -14,7 +25,11 @@ from .database import db_session, init_db
 from flask_security import LoginForm, url_for_security
 from flask_security.utils import  encrypt_password
 from datetime import datetime
+import itertools
+import sys
 
+def str_to_class(classname):
+    return getattr(sys.modules[__name__], classname)
 
 def register_extensions(app):
     mail.init_app(app)
@@ -104,13 +119,12 @@ def create_app(config, selenium=False):
     init_admin(app)
     configure_logs(app)
     app_context(app)
-    app = Dash_App1.Add_Dash(app)
-    app = Dash_App2.Add_Dash(app)
-    app = Dash_App3.Add_Dash(app)
-    app = Dash_App4.Add_Dash(app)
-    app = Dash_App5.Add_Dash(app)
-    app = Dash_App6.Add_Dash(app)
-    app = Dash_App7.Add_Dash(app)
-    app = Dash_App8.Add_Dash(app)
-    app = Dash_App9.Add_Dash(app)
+   
+    all_classes_list = list(itertools.chain(worldclasses,itclasses,entertainclasses,mathclasses,cryptoclasses,financeclasses))
+    # print(all_classes_list)
+
+    for single_class in all_classes_list:
+        to_Add_App = str_to_class(single_class)
+        app = to_Add_App.Add_Dash(app) 
+
     return app
