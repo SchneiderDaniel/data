@@ -1,6 +1,6 @@
 from . import blueprint
 from flask import render_template
-from Dashapps.crypto import Dash_App5
+from Dashapps.crypto import *
 from flask_security import login_required, roles_accepted
 
 
