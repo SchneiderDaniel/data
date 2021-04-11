@@ -27,15 +27,7 @@
         </footer>
       </blockquote>
     </div> -->
-    <div class="card" >
-      <img class="card-img-top" src="{{ url_for('static', filename='images/cards/virus.png') }}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Deaths in the USA in 2020</h5>
-        <p class="card-text">What you will see in this chart, are the deaths in the USA in year 2020 in comparison to all the years before.</p>
-        <a href="{{ url_for( 'world_blueprint.app8_template') }}" class="btn btn-primary" role="button" aria-pressed="true"><i class="fas fa-play-circle"></i>&nbsp; Start</a>
-        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-      </div>
-    </div>
+    
 
     <div class="card" >
       <img class="card-img-top" src="{{ url_for('static', filename='images/cards/happy.png') }}" alt="Card image cap">
@@ -48,7 +40,17 @@
     </div>
 
     <div class="card" >
-      <img class="card-img-top" src="{{ url_for('static', filename='images/cards/happy.png') }}" alt="Card image cap">
+      <img class="card-img-top" src="{{ url_for('static', filename='images/cards/virus.png') }}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Death rate in 2020</h5>
+        <p class="card-text">How different were the death rates in 2020 in comparison to the years before?</p>
+        <a href="{{ url_for( 'world_blueprint.app8_template') }}" class="btn btn-primary" role="button" aria-pressed="true"><i class="fas fa-play-circle"></i>&nbsp; Start</a>
+        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+      </div>
+    </div>
+
+    <div class="card" >
+      <img class="card-img-top" src="{{ url_for('static', filename='images/cards/old.png') }}" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Worldwide Life Expectancy</h5>
         <p class="card-text">How high is the healty life expectancy worldwide?</p>
