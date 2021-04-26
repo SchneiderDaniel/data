@@ -56,7 +56,7 @@ temp2 = temp.sort_values(by=['Perceptions of corruption'], ascending=False)[:20]
 fig = px.choropleth(temp, locations='iso_alpha',
                     color='Perceptions of corruption',
                     hover_name='Country name',
-                    color_continuous_scale=px.colors.diverging.RdYlGn,
+                    color_continuous_scale=px.colors.diverging.Picnic,
                    )
 fig.update_layout(
     showlegend=False,
