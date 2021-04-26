@@ -4,7 +4,7 @@ from Dashapps.it import *
 from flask_security import login_required, roles_accepted
 
 
-@blueprint.route('/success-of-ai-projects')
+@blueprint.route('/what-are-the-most-popular-programming-languages')
 # @login_required
 def app7_template():
     return render_template('app7.html', dash_url = Dash_App7.url_base)
