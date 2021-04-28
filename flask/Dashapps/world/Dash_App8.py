@@ -9,7 +9,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors
+from ..Dash_base import warning_card, colors, cite_card
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -31,8 +31,9 @@ data_licenses = [
 
 sourced_date = "03/20/2021"
 
-cite_text = ""
-cite_author = ""
+cite_text = '"I will not say: do not weep; for not all tears are an evil."'
+cite_author = "J.R.R. Tolkien"
+cite_link = "https://en.wikipedia.org/wiki/J._R._R._Tolkien"
 
 
 df = pd.read_csv('app_data/processed/0008.csv', dtype={'Jurisdiction of Occurrence': str,'Year': int,'Week': int,'Cause': int})
@@ -95,6 +96,12 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         'color': colors['text'],
         'backgroundColor': colors['background']
     }),
+    html.Div(children=cite_card(cite_text,cite_author,cite_link), style={
+        'textAlign': 'center',
+        'color': colors['text'],
+        'backgroundColor': colors['background']
+    }),
+    html.Br(),
     dcc.Graph(
         id='example-graph-2',
         figure=fig

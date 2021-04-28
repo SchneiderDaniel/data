@@ -9,7 +9,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors
+from ..Dash_base import warning_card, colors, cite_card
 import dash_table
 from flask import request
 import locale
@@ -21,6 +21,10 @@ data_sources = [
 
 data_licenses = [
 ]
+
+cite_text = '"If you’re in the luckiest one per cent of humanity, you owe it to the rest of humanity to think about the other 99 per cent."'
+cite_author = "Warren Buffett"
+cite_link = "https://en.wikipedia.org/wiki/Warren_Buffett"
 
 def description_card():
     return html.Div(
@@ -53,6 +57,11 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         }
     ),
     html.Div(children=description_card(), style={
+        'textAlign': 'center',
+        'color': colors['text'],
+        'backgroundColor': colors['background']
+    }),
+    html.Div(children=cite_card(cite_text,cite_author,cite_link), style={
         'textAlign': 'center',
         'color': colors['text'],
         'backgroundColor': colors['background']

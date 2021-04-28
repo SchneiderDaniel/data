@@ -10,7 +10,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
-from ..Dash_base import warning_card, colors
+from ..Dash_base import warning_card, colors, cite_card
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -34,8 +34,9 @@ data_licenses = [
 
 sourced_date = "03/21/2021"
 
-cite_text = ""
-cite_author = ""
+cite_text = '"Attention is the rarest and purest form of generosity."'
+cite_author = "Simone Weil"
+cite_link = "https://en.wikipedia.org/wiki/Simone_Weil"
 
 
 df = pd.read_csv('app_data/processed/0009.csv')
@@ -168,6 +169,12 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         'color': colors['text'],
         'backgroundColor': colors['background']
     }),
+    html.Div(children=cite_card(cite_text,cite_author,cite_link), style={
+        'textAlign': 'center',
+        'color': colors['text'],
+        'backgroundColor': colors['background']
+    }),
+    html.Br(),
     dcc.Graph(
         id='ty-figure',
         figure=fig

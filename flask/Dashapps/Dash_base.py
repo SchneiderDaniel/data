@@ -31,7 +31,7 @@ def cite_card(cite_text,cite_author,cite_link):
                     'textAlign': 'right',
                     'color': colors['text']
                     }),
-            dbc.NavLink(f" \u2192 Who is that?",href=cite_link, target='_blank', style={
+            dbc.NavLink(f" \u2192 Info",href=cite_link, target='_blank', style={
                     'textAlign': 'right',
                     'color': colors['text'],
                     'font-style': 'italic',

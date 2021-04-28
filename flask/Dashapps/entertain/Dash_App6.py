@@ -9,7 +9,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors
+from ..Dash_base import warning_card, colors, cite_card
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -29,8 +29,9 @@ data_licenses = [
 
 sourced_date = "02/10/2021"
 
-cite_text = ""
-cite_author = ""
+cite_text = '"You only live twice: Once when you are born And once when you look death in the face."'
+cite_author = "Ian Fleming"
+cite_link = "https://en.wikipedia.org/wiki/Ian_Fleming"
 
 df = pd.read_csv('app_data/processed/0006.csv', dtype={'Movie': str,'Kills by Bond': int,'Kills of Others': int})
 
@@ -70,7 +71,11 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         'color': colors['text'],
         'backgroundColor': colors['background']
     }),
-    
+    html.Div(children=cite_card(cite_text,cite_author,cite_link), style={
+        'textAlign': 'center',
+        'color': colors['text'],
+        'backgroundColor': colors['background']
+    }),
     dcc.Graph(
         id='example-graph-2',
         figure=fig

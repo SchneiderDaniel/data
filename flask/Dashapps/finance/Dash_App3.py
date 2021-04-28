@@ -9,7 +9,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors
+from ..Dash_base import warning_card, colors, cite_card
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -24,6 +24,10 @@ data_sources = [
 
 data_licenses = [
 ]
+
+cite_text = "If you want great things to happen in your career, think big... Focus on the future. Double-down on innovation."
+cite_author = "Cathie Wood"
+cite_link = "https://en.wikipedia.org/wiki/Cathie_Wood"
 
 def description_card():
     return html.Div(
@@ -208,6 +212,11 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         }
     ),
     html.Div(children=description_card(), style={
+        'textAlign': 'center',
+        'color': colors['text'],
+        'backgroundColor': colors['background']
+    }),
+    html.Div(children=cite_card(cite_text,cite_author,cite_link), style={
         'textAlign': 'center',
         'color': colors['text'],
         'backgroundColor': colors['background']

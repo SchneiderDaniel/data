@@ -12,7 +12,7 @@ import dash_daq as daq
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors, cite_card
+from ..Dash_base import warning_card, colors, cite_card, cite_card
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -33,7 +33,7 @@ sourced_date = "04/28/2021"
 
 cite_text = '"The most disastrous thing that you can ever learn is your first programming language."'
 cite_author = "Alan Kay"
-cite_link = "https://de.wikipedia.org/wiki/Alan_Kay"
+cite_link = "https://en.wikipedia.org/wiki/Alan_Kay"
 
 dateparse = lambda x: datetime.strptime(x, '%B %Y')
 
