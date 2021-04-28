@@ -14,13 +14,35 @@ colors = {
     'green2':'#76b557',
     'gray':'#7f8280',
     'black':'#202121',
-    'lightgray':'#acb5b5'
-
-
+    'lightgray':'#acb5b5',
+    'superlightgray':'#e9ecef'
 }
 
-
-def warning_card(data_sources,data_licenses):
+def cite_card(cite_text,cite_author,cite_link):
+    return dbc.Container(
+        [
+            html.Br(),
+            html.P(f"{cite_text}", style={
+                    'textAlign': 'left',
+                    'color': colors['text']
+                    }),
+            html.Hr(),
+            html.P(f" by {cite_author}", style={
+                    'textAlign': 'right',
+                    'color': colors['text']
+                    }),
+            dbc.NavLink(f" \u2192 Who is that?",href=cite_link, target='_blank', style={
+                    'textAlign': 'right',
+                    'color': colors['text'],
+                    'font-style': 'italic',
+                   }),
+            # html.Br(),
+        ],style={
+                       'backgroundColor': colors['superlightgray'],
+                       'font-family':'"Poppins", sans-serif',
+                   },
+    )
+def warning_card(data_sources,data_licenses, source_date="<na>"):
     return dbc.Jumbotron(
     [
         dbc.Container(
@@ -34,6 +56,7 @@ def warning_card(data_sources,data_licenses):
                 html.H4("Sources and Licenses:", style={'color': colors['info']}),
                 get_link_list(data_sources,"Source"),
                 get_link_list(data_licenses,"License"),
+                html.P("Data sourced on: " + source_date),
                 dbc.Alert(
                         [
                             "In case you are the owner of one of the data sources and you are not ok with the usage on this page, you can contact us ",

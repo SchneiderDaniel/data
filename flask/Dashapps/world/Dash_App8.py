@@ -29,6 +29,11 @@ data_licenses = [
     "https://www.usa.gov/government-works"
 ]
 
+sourced_date = "03/20/2021"
+
+cite_text = ""
+cite_author = ""
+
 
 df = pd.read_csv('app_data/processed/0008.csv', dtype={'Jurisdiction of Occurrence': str,'Year': int,'Week': int,'Cause': int})
 
@@ -98,7 +103,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
     html.Br(),
     html.Hr(className="my-2"),
     html.Br(),
-    html.Div(children=warning_card(data_sources,data_licenses), style={
+    html.Div(children=warning_card(data_sources,data_licenses,sourced_date), style={
         'textAlign': 'left',
         'color': colors['text'],
         'backgroundColor': colors['background']

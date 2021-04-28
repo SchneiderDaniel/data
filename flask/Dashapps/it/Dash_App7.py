@@ -12,7 +12,7 @@ import dash_daq as daq
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors
+from ..Dash_base import warning_card, colors, cite_card
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -29,11 +29,18 @@ data_licenses = [
     "https://creativecommons.org/licenses/by/4.0/"
 ]
 
+sourced_date = "04/28/2021"
+
+cite_text = '"The most disastrous thing that you can ever learn is your first programming language."'
+cite_author = "Alan Kay"
+cite_link = "https://de.wikipedia.org/wiki/Alan_Kay"
+
 dateparse = lambda x: datetime.strptime(x, '%B %Y')
 
 df = pd.read_csv('app_data/processed/0007.csv', parse_dates=['Date'], date_parser=dateparse)
 df2 = pd.read_csv('app_data/processed/0007_2.csv', dtype={'Color': str})
 # print(df)
+
 
 
 minDate = 0
@@ -95,7 +102,13 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         'color': colors['text'],
         'backgroundColor': colors['background']
     }),
+    html.Div(children=cite_card(cite_text,cite_author,cite_link), style={
+        'textAlign': 'center',
+        'color': colors['text'],
+        'backgroundColor': colors['background']
+    }),
     html.Br(),
+    html.P("Select:"),
     dcc.Slider(
         id='ty-slider',
         min=minDate,
@@ -121,7 +134,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
     html.Br(),
     html.Hr(className="my-2"),
     html.Br(),
-    html.Div(children=warning_card(data_sources,data_licenses), style={
+    html.Div(children=warning_card(data_sources,data_licenses,sourced_date), style={
         'textAlign': 'left',
         'color': colors['text'],
         'backgroundColor': colors['background']

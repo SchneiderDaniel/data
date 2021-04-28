@@ -32,6 +32,12 @@ data_licenses = [
     "https://creativecommons.org/publicdomain/zero/1.0/"
 ]
 
+sourced_date = "03/21/2021"
+
+cite_text = ""
+cite_author = ""
+
+
 df = pd.read_csv('app_data/processed/0009.csv')
 
 # temp = df.sort_values(by=['Ladder score'], ascending=False)
@@ -172,7 +178,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
     html.Br(),
     html.Hr(className="my-2"),
     html.Br(),
-    html.Div(children=warning_card(data_sources,data_licenses), style={
+    html.Div(children=warning_card(data_sources,data_licenses,sourced_date), style={
         'textAlign': 'left',
         'color': colors['text'],
         'backgroundColor': colors['background']

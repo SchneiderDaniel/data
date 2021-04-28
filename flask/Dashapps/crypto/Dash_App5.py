@@ -27,6 +27,10 @@ data_licenses = [
     "https://creativecommons.org/publicdomain/zero/1.0/"
 ]
 
+sourced_date = "03/22/2021"
+
+cite_text = ""
+cite_author = ""
 
 df = pd.read_csv('app_data/processed/0005.csv', dtype={'Year': int,'Name': str,'Color': str})
 
@@ -104,7 +108,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
     html.Br(),
     html.Hr(className="my-2"),
     html.Br(),
-    html.Div(children=warning_card(data_sources,data_licenses), style={
+    html.Div(children=warning_card(data_sources,data_licenses,sourced_date), style={
         'textAlign': 'left',
         'color': colors['text'],
         'backgroundColor': colors['background']

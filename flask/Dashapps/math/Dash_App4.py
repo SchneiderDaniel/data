@@ -25,6 +25,11 @@ data_sources = [
 data_licenses = [
 ]
 
+cite_text = ""
+cite_author = ""
+
+
+
 def description_card():
     return html.Div(
         id="description_card",
