@@ -34,9 +34,9 @@ data_licenses = [
 
 sourced_date = "03/21/2021"
 
-cite_text = "No nice citation yet. Feel free to make a proposal through the contact page"
-cite_author = ""
-cite_link = ""
+cite_text = '"Few people are capable of expressing with equanimity opinions which differ from the prejudices of their social enviroment. Most people are incapable of forming such opinions."'
+cite_author = "Albert Einstein"
+cite_link = "https://en.wikipedia.org/wiki/Albert_Einstein"
 
 
 df = pd.read_csv('app_data/processed/0009.csv')
