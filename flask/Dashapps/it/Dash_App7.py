@@ -38,16 +38,13 @@ df2 = pd.read_csv('app_data/processed/0007_2.csv', dtype={'Color': str})
 
 minDate = 0
 maxDate = len(df.index)
-# print(df)
-# print('Dates:')
-# print(maxDate)
 marks_dict = {}
-
 date_list = df['Date'].tolist()
-
 for i in range(len(date_list)):
     marks_dict[i]=str(date_list[i].strftime("%B %Y"))
 
+
+#----
 mask = (df['Date']==df['Date'].min())
 df_toDraw=df.loc[mask].drop(['Date'], axis=1).transpose()
 df_toDraw['Color'] = np.array(df2['Color'].tolist())
@@ -146,11 +143,43 @@ def Add_Dash(server):
 
 
     @app.callback(
-        [Output("slider-value", "children")],
+        [Output('ty-figure', 'figure'),
+        Output("slider-value", "children"),
+        ],
         [Input(component_id='ty-slider', component_property='value')]
     )
     def computeBalance(value_from_slider):
-        return [str(marks_dict[value_from_slider])]
+
+        # mask = (df['Date']==df['Date'].min())
+        # df_toDraw=df.loc[mask].drop(['Date'], axis=1).transpose()
+        df_toDraw = df.iloc[[value_from_slider]].drop(['Date'], axis=1).transpose()
+        
+        df_toDraw['Color'] = np.array(df2['Color'].tolist())
+
+        mask2 = (df_toDraw.iloc[:,0]!=0)
+        df_toDraw=df_toDraw.loc[mask2]
+        df_toDraw.rename(columns={ df_toDraw.columns[0]: "Percent" }, inplace=True)
+
+        df_toDraw['Name'] = df_toDraw.index
+
+        fig_toDraw = go.Figure(data=[go.Pie(labels=df_toDraw['Name'].tolist(),
+                                    values=df_toDraw['Percent'].tolist())])
+
+        fig_toDraw.update_traces(hoverinfo='label+percent', textposition='inside', textinfo='percent+label',  marker=dict(colors=df_toDraw['Color'].tolist(), line=dict(color='#000000', width=2)))
+
+        fig_toDraw.update_layout(
+            showlegend=False,
+            title_xanchor="auto",
+            height=800,
+            margin=dict(
+                l=0,
+                r=0,
+                b=0,
+                t=20
+            )
+        )
+
+        return fig_toDraw,[str(marks_dict[value_from_slider])]
 
 
     # @app.callback(
