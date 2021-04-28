@@ -2,48 +2,51 @@
 
 from dash import Dash
 from dash.dependencies import Input, Output, ALL, State, MATCH, ALLSMALLER, ClientsideFunction
-from .Dash_fun import apply_layout_with_auth, load_object, save_object
+from ..Dash_fun import apply_layout_with_auth, load_object, save_object
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
+# https://github.com/plotly/dash-daq
+#https://dash-docs.herokuapp.com/dash-daq
+import dash_daq as daq
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from .Dash_base import warning_card, colors
+from ..Dash_base import warning_card, colors, cite_card, cite_card
 import dash_table
 from datetime import datetime
 import numpy as np
 from flask import request
 import locale
 
-
 url_base = '/dash/appX/' 
 
-
-
 data_sources = [
-   
-
-data_licenses = [
-    
 ]
 
+data_licenses = [
+]
 
+sourced_date = "XX/XX/XXXX"
+
+cite_text = '""'
+cite_author = ""
+cite_link = ""
+
+df = pd.read_csv('app_data/processed/0007.csv', parse_dates=['Date'], date_parser=dateparse)
 
 def description_card():
     return html.Div(
         id="description_card",
-        children = [dcc.Markdown(''' Test 1234 as dkanfk jnasfn aösfn asnf ansfä nafl naäsfnm älakfns äolk''')],
+        children = [dcc.Markdown(''' On this pie chart you see the most popular programming languages in the past few years with the data pulled from github.''')],
     style={
         'backgroundColor': colors['background'],
     })
 
-
-
 # The Layout
 layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor': colors['background']}, children=[
     html.H1(
-        children='XXXXXXXX',
+        children='Most Popular Programming Languages',
         style={
             'textAlign': 'center',
             'color': colors['text'],
@@ -55,27 +58,20 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         'color': colors['text'],
         'backgroundColor': colors['background']
     }),
-    dcc.Graph(
-        id='ty-figure',
-        figure=fig
-    ),
+    html.Div(children=cite_card(cite_text,cite_author,cite_link), style={
+        'textAlign': 'center',
+        'color': colors['text'],
+        'backgroundColor': colors['background']
+    }),
     html.Br(),
     html.Hr(className="my-2"),
     html.Br(),
-    html.Div(children=warning_card(data_sources,data_licenses), style={
+    html.Div(children=warning_card(data_sources,data_licenses,sourced_date), style={
         'textAlign': 'left',
         'color': colors['text'],
         'backgroundColor': colors['background']
     })
 ])
-
-def cast_int(val):
-    if val is None: return 1
-    return int(val)
-
-def cast_float(val):
-    if val is None: return 1.0
-    return float(val)
 
 def Add_Dash(server):
     app = Dash(server=server, url_base_pathname=url_base, external_stylesheets = [dbc.themes.BOOTSTRAP], external_scripts = ["https://cdn.plot.ly/plotly-locale-de-latest.js"], meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}])

@@ -79,6 +79,8 @@ fig.update_layout(
     )
 )
 
+
+
 def description_card():
     return html.Div(
         id="description_card",
@@ -179,6 +181,10 @@ def Add_Dash(server):
                                     values=df_toDraw['Percent'].tolist())])
 
         fig_toDraw.update_traces(hoverinfo='label+percent', textposition='inside', textinfo='percent+label',  marker=dict(colors=df_toDraw['Color'].tolist(), line=dict(color='#000000', width=2)))
+
+
+
+ 
 
         fig_toDraw.update_layout(
             showlegend=False,
