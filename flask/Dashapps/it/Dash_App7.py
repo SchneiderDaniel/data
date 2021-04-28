@@ -6,6 +6,9 @@ from ..Dash_fun import apply_layout_with_auth, load_object, save_object
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
+# https://github.com/plotly/dash-daq
+#https://dash-docs.herokuapp.com/dash-daq
+import dash_daq as daq
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
@@ -33,16 +36,19 @@ df2 = pd.read_csv('app_data/processed/0007_2.csv', dtype={'Color': str})
 # print(df)
 
 
-minDate = df['Date'].min()
-maxDate = df['Date'].max()
+minDate = 0
+maxDate = len(df.index)
+# print(df)
+# print('Dates:')
+# print(maxDate)
 marks_dict = {}
 
 date_list = df['Date'].tolist()
 
-for date in date_list:
-    marks_dict[date]=str(date)
+for i in range(len(date_list)):
+    marks_dict[i]=str(date_list[i].strftime("%B %Y"))
 
-mask = (df['Date']==minDate)
+mask = (df['Date']==df['Date'].min())
 df_toDraw=df.loc[mask].drop(['Date'], axis=1).transpose()
 df_toDraw['Color'] = np.array(df2['Color'].tolist())
 
@@ -93,17 +99,23 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         'backgroundColor': colors['background']
     }),
     html.Br(),
+    dcc.Slider(
+        id='ty-slider',
+        min=minDate,
+        max=maxDate-1,
+        # dots=False,
+        step=1,
+        value=minDate,
+        # marks = marks_dict,
+        # handleLabel={"showCurrentValue": True,"label": "VALUE"},
+        updatemode='drag',
+        # handleLabel=marks_dict
+        
+        # targets = marks_dict,
+        # tooltip = { 'always_visible': False },
+    ),
+    html.Div(id="slider-value", style={"text-align": "right","font-style": "italic" }),
     html.Br(),
-    # dcc.Slider(
-    #     id='ty-slider',
-    #     min=minDate,
-    #     max=maxDate,
-    #     step=1,
-    #     value=minDate,
-    #     updatemode='drag',
-    #     marks = marks_dict,
-    #     # tooltip = { 'always_visible': True },
-    # ),
     dcc.Graph(
         id='ty-figure',
         figure=fig
@@ -131,6 +143,14 @@ def Add_Dash(server):
     app = Dash(server=server, url_base_pathname=url_base, external_stylesheets = [dbc.themes.BOOTSTRAP], external_scripts = ["https://cdn.plot.ly/plotly-locale-de-latest.js"], meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}])
     
     apply_layout_with_auth(app, layout)
+
+
+    @app.callback(
+        [Output("slider-value", "children")],
+        [Input(component_id='ty-slider', component_property='value')]
+    )
+    def computeBalance(value_from_slider):
+        return [str(marks_dict[value_from_slider])]
 
 
     # @app.callback(
