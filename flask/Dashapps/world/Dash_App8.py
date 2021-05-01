@@ -9,7 +9,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors, cite_card
+from ..Dash_base import warning_card, colors, cite_card, description_card
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -34,7 +34,7 @@ sourced_date = "03/20/2021"
 cite_text = '"I will not say: do not weep; for not all tears are an evil."'
 cite_author = "J.R.R. Tolkien"
 cite_link = "https://en.wikipedia.org/wiki/J._R._R._Tolkien"
-
+description_text = '''What you see below are the deaths in the USA in year 2020 in comparison to all the years before. We see how the pandamic affected the number of deaths per week in 2020.'''
 
 df = pd.read_csv('app_data/processed/0008.csv', dtype={'Jurisdiction of Occurrence': str,'Year': int,'Week': int,'Cause': int})
 
@@ -71,15 +71,6 @@ chart_layout =  go.Layout(xaxis={'title': 'Week of the Year'},
 fig = go.Figure(data=chart_data, layout=chart_layout)  
 
 
-def description_card():
-    return html.Div(
-        id="description_card",
-        children = [dcc.Markdown(''' What you see below are the deaths in the USA in year 2020 in comparison to all the years before. We see how the pandamic affected the number of deaths per week in 2020. ''')],
-    style={
-        'backgroundColor': colors['background'],
-    })
-
-
 
 # The Layout
 layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor': colors['background']}, children=[
@@ -91,7 +82,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
             'backgroundColor': colors['background']
         }
     ),
-    html.Div(children=description_card(), style={
+    html.Div(children=description_card(description_text), style={
         'textAlign': 'center',
         'color': colors['text'],
         'backgroundColor': colors['background']

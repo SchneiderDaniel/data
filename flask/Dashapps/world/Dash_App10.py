@@ -10,7 +10,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
-from ..Dash_base import warning_card, colors, cite_card
+from ..Dash_base import warning_card, colors, cite_card, description_card
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -36,7 +36,7 @@ sourced_date = "03/21/2021"
 cite_text = '"Some day you will be old enough to start reading fairy tales again."'
 cite_author = "C.S. Lewis"
 cite_link = "https://en.wikipedia.org/wiki/C._S._Lewis"
-
+description_text = '''On the map below you see the healthy life expectancy score mapped onto each country. The results are gathered from the Gallup World Poll. Below the map you will also find a list of the Top 20 countries based on the life expectancy.'''
 df = pd.read_csv('app_data/processed/0009.csv')
 
 # temp = df.sort_values(by=['Ladder score'], ascending=False)
@@ -142,14 +142,6 @@ fig2.update_layout(
 fig2.update_annotations(yshift=5)
 
 
-def description_card():
-    return html.Div(
-        id="description_card",
-        children = [dcc.Markdown(''' On the map below you see the healthy life expectancy score mapped onto each country. The results are gathered from the Gallup World Poll. Below the map you will also find a list of the Top 20 countries based on the life expectancy.''')],
-    style={
-        'backgroundColor': colors['background'],
-    })
-
 
 
 # The Layout
@@ -162,7 +154,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
             'backgroundColor': colors['background']
         }
     ),
-    html.Div(children=description_card(), style={
+    html.Div(children=description_card(description_text), style={
         'textAlign': 'center',
         'color': colors['text'],
         'backgroundColor': colors['background']

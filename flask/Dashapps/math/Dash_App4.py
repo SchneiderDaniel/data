@@ -9,7 +9,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors, cite_card
+from ..Dash_base import warning_card, colors, cite_card, description_card
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -28,16 +28,8 @@ data_licenses = [
 cite_text = ""
 cite_author = ""
 cite_link = ""
+description_text = '''Test 1234 as dkanfk jnasfn aösfn asnf ansfä nafl naäsfnm älakfns äolk'''
 
-
-
-def description_card():
-    return html.Div(
-        id="description_card",
-        children = [dcc.Markdown(''' Test 1234 as dkanfk jnasfn aösfn asnf ansfä nafl naäsfnm älakfns äolk''')],
-    style={
-        'backgroundColor': colors['background'],
-    })
 
 
 
@@ -51,7 +43,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
             'backgroundColor': colors['background']
         }
     ),
-    html.Div(children=description_card(), style={
+    html.Div(children=description_card(description_text), style={
         'textAlign': 'center',
         'color': colors['text'],
         'backgroundColor': colors['background']

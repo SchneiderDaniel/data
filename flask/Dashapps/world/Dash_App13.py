@@ -10,7 +10,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
-from ..Dash_base import warning_card, colors, cite_card
+from ..Dash_base import warning_card, colors, cite_card, description_card
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -37,7 +37,7 @@ sourced_date = "03/21/2021"
 cite_text = '"Freedom is not worth having if it does not include the freedom to make mistakes"'
 cite_author = "Mahatma Gandhi"
 cite_link = "https://en.wikipedia.org/wiki/Mahatma_Gandhi"
-
+description_text = '''On the map below you see the a score that measures how people have the feeling to be able to make life coices in the individual countries. The score ranges from 0 to 1. The results are gathered from the Gallup World Poll. Below the map you will also find a list of the Top 20 countries based on the score.'''
 
 df = pd.read_csv('app_data/processed/0009.csv')
 
@@ -144,16 +144,6 @@ fig2.update_layout(
 fig2.update_annotations(yshift=5)
 
 
-def description_card():
-    return html.Div(
-        id="description_card",
-        children = [dcc.Markdown(''' On the map below you see the a score that measures how people have the feeling to be able to make life coices in the individual countries. The score ranges from 0 to 1. The results are gathered from the Gallup World Poll. Below the map you will also find a list of the Top 20 countries based on the score.''')],
-    style={
-        'backgroundColor': colors['background'],
-    })
-
-
-
 # The Layout
 layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor': colors['background']}, children=[
     html.H1(
@@ -164,7 +154,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
             'backgroundColor': colors['background']
         }
     ),
-    html.Div(children=description_card(), style={
+    html.Div(children=description_card(description_text), style={
         'textAlign': 'center',
         'color': colors['text'],
         'backgroundColor': colors['background']

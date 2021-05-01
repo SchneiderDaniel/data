@@ -13,7 +13,7 @@ import dash_bootstrap_components as dbc
 import plotly.graph_objs as go
 import numpy as np
 import pandas as pd
-from ..Dash_base import warning_card, colors, cite_card
+from ..Dash_base import warning_card, colors, cite_card, description_card
 import datetime as dt 
 from ..compute_util.stockinterface import isTickerValid, getCorrelationMatrix, getPortfolioCorrelation,getCorrelationMatrix_List, getPortfolioCorrelation_List, getTickerDataframesList, getTickerDataframe
 from flask import request
@@ -34,6 +34,7 @@ data_licenses = [
 cite_text = '"Forecasts may tell you a great deal about the forecaster; they tell you nothing about the future."'
 cite_author = "Warren Buffett"
 cite_link = "https://en.wikipedia.org/wiki/Warren_Buffett"
+description_text = '''This tool can compute the correlation of your assets. It uses the ticker of yahoo and computes the correlation for all combinations of your assets. This is called the correlation matrix. The coorelation is computed on the daily, as well as on the monthly performance. We compute it for the maximum timeframe of the data. But additionally, you can also enter a custom timeframe. You have to be careful with currency. We don't check the currency, so **don't mix currencies**.'''
 
 def get_dummy_df():
     d = {'-': [0, 0], '- ': [0, 0]}
@@ -42,13 +43,6 @@ def get_dummy_df():
 
 df_corr =  get_dummy_df()
 
-def description_card():
-    return html.Div(
-        id="description_card",
-        children = [dcc.Markdown('''This tool can compute the correlation of your assets. It uses the ticker of yahoo and computes the correlation for all combinations of your assets. This is called the correlation matrix. The coorelation is computed on the daily, as well as on the monthly performance. We compute it for the maximum timeframe of the data. But additionally, you can also enter a custom timeframe. You have to be careful with currency. We don't check the currency, so **don't mix currencies**.''')],
-    style={
-        'backgroundColor': colors['background'],
-    })
 
 def ticker_card():
 
@@ -82,7 +76,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
             'backgroundColor': colors['background']
         }
     ),
-    html.Div(children=description_card(), style={
+    html.Div(children=description_card(description_text), style={
         'textAlign': 'center',
         'color': colors['text'],
         'backgroundColor': colors['background']

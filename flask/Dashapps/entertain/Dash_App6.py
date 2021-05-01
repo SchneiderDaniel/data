@@ -9,7 +9,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors, cite_card
+from ..Dash_base import warning_card, colors, cite_card, description_card
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -32,9 +32,9 @@ sourced_date = "02/10/2021"
 cite_text = '"You only live twice: Once when you are born And once when you look death in the face."'
 cite_author = "Ian Fleming"
 cite_link = "https://en.wikipedia.org/wiki/Ian_Fleming"
+description_text = '''In this chart we take a look at the violence of James Bond movies. We define the violence of a movie by the sum of kills that were caused by James Bond himself and others. '''
 
 df = pd.read_csv('app_data/processed/0006.csv', dtype={'Movie': str,'Kills by Bond': int,'Kills of Others': int})
-
 
 
 fig = px.bar(df, x="Movie", y=["Kills by Bond", "Kills of Others"], title="History of James Bond Movies",labels={'value':'Kills','variable':'Cause'})
@@ -45,15 +45,6 @@ fig.update_layout(legend=dict(
     xanchor="right",
     x=1
 ),margin={'r': 1,'l':1},yaxis={'visible': True})
-
-def description_card():
-    return html.Div(
-        id="description_card",
-        children = [dcc.Markdown(''' In this chart we take a look at the violence of James Bond movies. We define the violence of a movie by the sum of kills that were caused by James Bond himself and others. '''),dbc.Alert("Info: By clicking on the legend you can switch the cause of the kills.", color="primary"),],
-    style={
-        'backgroundColor': colors['background'],
-    })
-
 
 
 # The Layout
@@ -66,7 +57,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
             'backgroundColor': colors['background']
         }
     ),
-    html.Div(children=description_card(), style={
+    html.Div(children=description_card(description_text), style={
         'textAlign': 'center',
         'color': colors['text'],
         'backgroundColor': colors['background']

@@ -9,7 +9,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors, cite_card
+from ..Dash_base import warning_card, colors, cite_card, description_card
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -28,14 +28,7 @@ data_licenses = [
 cite_text = "If you want great things to happen in your career, think big... Focus on the future. Double-down on innovation."
 cite_author = "Cathie Wood"
 cite_link = "https://en.wikipedia.org/wiki/Cathie_Wood"
-
-def description_card():
-    return html.Div(
-        id="description_card",
-        children = [dcc.Markdown('''If you have to choose between two investment funds that are based on the **same benchmark**, chances are high that they have different costs. This tool wants to give you an idea on the impact of the costs for the performance. In addition, we give you the opportunity to simulate a scenario where a fund delivers an outperformance to its benchmark. This can give you an idea how much outperformance per year is needed, in order to outperform the benchmark after costs.''')],
-    style={
-        'backgroundColor': colors['background'],
-    })
+description_text = '''If you have to choose between two investment funds that are based on the **same benchmark**, chances are high that they have different costs. This tool wants to give you an idea on the impact of the costs for the performance. In addition, we give you the opportunity to simulate a scenario where a fund delivers an outperformance to its benchmark. This can give you an idea how much outperformance per year is needed, in order to outperform the benchmark after costs.'''
 
 def basic_card():
     return html.Div(
@@ -211,7 +204,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
             'backgroundColor': colors['background']
         }
     ),
-    html.Div(children=description_card(), style={
+    html.Div(children=description_card(description_text), style={
         'textAlign': 'center',
         'color': colors['text'],
         'backgroundColor': colors['background']

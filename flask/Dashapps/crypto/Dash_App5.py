@@ -9,7 +9,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors, cite_card
+from ..Dash_base import warning_card, colors, cite_card, description_card
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -33,6 +33,7 @@ sourced_date = "03/22/2021"
 cite_text = '"Bitcoin is often mistakenly characterized as “anonymous” currency. In fact, it is relatively easy to connect identities to bitcoin addresses and, using big-data analytics, connect addresses to each other to form a comprehensive picture of someone’s bitcoin spending habits."'
 cite_author = "Andreas M. Antonopoulos"
 cite_link = "https://en.wikipedia.org/wiki/Andreas_Antonopoulos"
+description_text = '''On this diagram you see the Top 20 Cryptocurrencies of the past few years. In these charts you will see the dominance of bitcoin. One says that this shows the irrelevance of all the other coins. And the others say that is shows the potential that is still hidden in these other coins. You choose your side ;)'''
 
 df = pd.read_csv('app_data/processed/0005.csv', dtype={'Year': int,'Name': str,'Color': str})
 
@@ -67,13 +68,7 @@ fig.update_layout(
 )
 
 
-def description_card():
-    return html.Div(
-        id="description_card",
-        children = [dcc.Markdown(''' On this diagram you see the Top 20 Cryptocurrencies of the past few years. In these charts you will see the dominance of bitcoin. One says that this shows the irrelevance of all the other coins. And the others say that is shows the potential that is still hidden in these other coins. You choose your side ;)''')],
-    style={
-        'backgroundColor': colors['background'],
-    })
+
 
 # The Layout
 layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor': colors['background']}, children=[
@@ -85,7 +80,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
             'backgroundColor': colors['background']
         }
     ),
-    html.Div(children=description_card(), style={
+    html.Div(children=description_card(description_text), style={
         'textAlign': 'center',
         'color': colors['text'],
         'backgroundColor': colors['background']

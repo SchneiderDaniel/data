@@ -12,7 +12,7 @@ import dash_daq as daq
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors, cite_card, cite_card
+from ..Dash_base import warning_card, colors, cite_card, cite_card, description_card
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -35,13 +35,12 @@ cite_text = '"The most disastrous thing that you can ever learn is your first pr
 cite_author = "Alan Kay"
 cite_link = "https://en.wikipedia.org/wiki/Alan_Kay"
 
+description_text = ''' On this pie chart you see the most popular programming languages in the past few years with the data pulled from github.'''
+
 dateparse = lambda x: datetime.strptime(x, '%B %Y')
 
 df = pd.read_csv('app_data/processed/0007.csv', parse_dates=['Date'], date_parser=dateparse)
 df2 = pd.read_csv('app_data/processed/0007_2.csv', dtype={'Color': str})
-# print(df)
-
-
 
 minDate = 0
 maxDate = len(df.index)
@@ -81,13 +80,6 @@ fig.update_layout(
 
 
 
-def description_card():
-    return html.Div(
-        id="description_card",
-        children = [dcc.Markdown(''' On this pie chart you see the most popular programming languages in the past few years with the data pulled from github.''')],
-    style={
-        'backgroundColor': colors['background'],
-    })
 
 # The Layout
 layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor': colors['background']}, children=[
@@ -99,7 +91,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
             'backgroundColor': colors['background']
         }
     ),
-    html.Div(children=description_card(), style={
+    html.Div(children=description_card(description_text), style={
         'textAlign': 'center',
         'color': colors['text'],
         'backgroundColor': colors['background']

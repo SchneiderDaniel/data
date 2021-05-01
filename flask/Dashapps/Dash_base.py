@@ -18,6 +18,16 @@ colors = {
     'superlightgray':'#e9ecef'
 }
 
+def description_card(description_text):
+    return html.Div(
+        id="description_card",
+        children = [dcc.Markdown(description_text)],
+    style={
+        'backgroundColor': colors['background'],
+    })
+
+
+
 def cite_card(cite_text,cite_author,cite_link):
     return dbc.Container(
         [

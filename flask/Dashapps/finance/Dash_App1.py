@@ -9,7 +9,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors, cite_card
+from ..Dash_base import warning_card, colors, cite_card, description_card
 import dash_table
 from flask import request
 import locale
@@ -25,14 +25,8 @@ data_licenses = [
 cite_text = '"If you’re in the luckiest one per cent of humanity, you owe it to the rest of humanity to think about the other 99 per cent."'
 cite_author = "Warren Buffett"
 cite_link = "https://en.wikipedia.org/wiki/Warren_Buffett"
+description_text = '''This tool wants to help you to rebalance your portfolio. If you have a desired distribution among a set of assets, it comes the time where this distribution is not longer the same. Some assets have increased and some decreased in value. If you now want to reblance your assets, this tool should make it easy for you.'''
 
-def description_card():
-    return html.Div(
-        id="description_card",
-        children="This tool wants to help you to rebalance your portfolio. If you have a desired distribution among a set of assets, it comes the time where this distribution is not longer the same. Some assets have increased and some decreased in value. If you now want to reblance your assets, this tool should make it easy for you.",
-    style={
-        'backgroundColor': colors['background'],
-    })
 
 def asset_card():
     return html.Div(
@@ -56,7 +50,7 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
             'backgroundColor': colors['background']
         }
     ),
-    html.Div(children=description_card(), style={
+    html.Div(children=description_card(description_text), style={
         'textAlign': 'center',
         'color': colors['text'],
         'backgroundColor': colors['background']
