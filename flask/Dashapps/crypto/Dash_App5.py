@@ -58,6 +58,19 @@ fig = go.Figure(go.Bar(
 
 fig.update_layout(
     height=800,
+    annotations=[
+        dict(
+            textangle=-30,
+            opacity=0.1,
+            font=dict(color="black", size=35),
+            xref="paper",
+            yref="paper",
+            x=0.5,
+            y=0.5,
+            showarrow=False,
+            text="www.blackandwhitedata.com",
+        )
+    ],
     margin=dict(
         l=50,
         r=0,
@@ -165,6 +178,19 @@ def Add_Dash(server):
 
         fig_toDraw.update_layout(
             height=800,
+            annotations=[
+                dict(
+                    textangle=-30,
+                    opacity=0.1,
+                    font=dict(color="black", size=25),
+                    xref="paper",
+                    yref="paper",
+                    x=0.5,
+                    y=0.5,
+                    showarrow=False,
+                    text="www.blackandwhitedata.com",
+                )
+            ],
             margin=dict(
                 l=50,
                 r=0,

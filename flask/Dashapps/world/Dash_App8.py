@@ -9,7 +9,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors, cite_card, description_card
+from ..Dash_base import warning_card, colors, cite_card, description_card, draft_template
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -66,10 +66,16 @@ chart_layout =  go.Layout(xaxis={'title': 'Week of the Year'},
                             orientation="h", # Looks much better horizontal than vertical
                             y=-0.15
                             ),
+                            template=draft_template,
+                            annotations=[
+                                dict(
+                                    templateitemname="draft watermark",
+                                    text="www.blackandwhitedata.com",
+                                )
+                            ],                    
                     hovermode='closest')
 
 fig = go.Figure(data=chart_data, layout=chart_layout)  
-
 
 
 # The Layout

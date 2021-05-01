@@ -1,6 +1,7 @@
 import dash_bootstrap_components as dbc
 import dash_html_components as html
 import dash_core_components as dcc
+import plotly.graph_objs as go
 
 
 
@@ -17,6 +18,22 @@ colors = {
     'lightgray':'#acb5b5',
     'superlightgray':'#e9ecef'
 }
+
+draft_template = go.layout.Template()
+draft_template.layout.annotations = [
+    dict(
+        name="draft watermark",
+        text="DRAFT",
+        textangle=0,
+        opacity=0.5,
+        font=dict(color="black", size=20),
+        xref="paper",
+        yref="paper",
+        x=0.95,
+        y=0.01,
+        showarrow=False,
+    )
+]
 
 def description_card(description_text):
     return html.Div(

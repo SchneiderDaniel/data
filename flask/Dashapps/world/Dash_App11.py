@@ -10,7 +10,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
-from ..Dash_base import warning_card, colors, cite_card, description_card
+from ..Dash_base import warning_card, colors, cite_card, description_card, draft_template
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -67,6 +67,13 @@ fig = px.choropleth(temp, locations='iso_alpha',
                    )
 fig.update_layout(
     showlegend=False,
+    template=draft_template,
+    annotations=[
+        dict(
+            templateitemname="draft watermark",
+            text="www.blackandwhitedata.com",
+        )
+    ],
     paper_bgcolor='rgb(248, 248, 255)',
     geo_bgcolor='rgb(248, 248, 255)',
     geo_showframe=False,

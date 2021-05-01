@@ -9,7 +9,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors, cite_card, description_card
+from ..Dash_base import warning_card, colors, cite_card, description_card, draft_template
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -29,7 +29,7 @@ data_licenses = [
 
 sourced_date = "02/10/2021"
 
-cite_text = '"You only live twice: Once when you are born And once when you look death in the face."'
+cite_text = '"You only live twice: Once when you are born and once when you look death in the face."'
 cite_author = "Ian Fleming"
 cite_link = "https://en.wikipedia.org/wiki/Ian_Fleming"
 description_text = '''In this chart we take a look at the violence of James Bond movies. We define the violence of a movie by the sum of kills that were caused by James Bond himself and others. '''
@@ -37,14 +37,38 @@ description_text = '''In this chart we take a look at the violence of James Bond
 df = pd.read_csv('app_data/processed/0006.csv', dtype={'Movie': str,'Kills by Bond': int,'Kills of Others': int})
 
 
-fig = px.bar(df, x="Movie", y=["Kills by Bond", "Kills of Others"], title="History of James Bond Movies",labels={'value':'Kills','variable':'Cause'})
+# fig = px.bar(df, x="Movie", y=["Kills by Bond", "Kills of Others"], title="History of James Bond Movies",labels={'value':'Kills','variable':'Cause'})
+fig = px.bar(df, y="Movie", x=["Kills by Bond", "Kills of Others"], title="History of James Bond Movies",labels={'value':'Kills','variable':'Cause'})
 fig.update_layout(legend=dict(
     orientation="h",
+  
     yanchor="bottom",
     y=1.02,
     xanchor="right",
     x=1
-),margin={'r': 1,'l':1},yaxis={'visible': True})
+),  
+    annotations=[
+        dict(
+            textangle=-30,
+            opacity=0.1,
+            font=dict(color="black", size=35),
+            xref="paper",
+            yref="paper",
+            x=0.5,
+            y=0.5,
+            showarrow=False,
+            text="www.blackandwhitedata.com",
+        )
+    ],
+    # template=draft_template,
+    # annotations=[
+    #     dict(
+    #         templateitemname="draft watermark",
+    #         text="www.blackandwhitedata.com",
+    #     )
+    # ],
+    height=800,
+    margin={'r': 4,'l':10},yaxis={'visible': True})
 
 
 # The Layout

@@ -12,7 +12,7 @@ import dash_daq as daq
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors, cite_card, cite_card, description_card
+from ..Dash_base import warning_card, colors, cite_card, cite_card, description_card, draft_template
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -114,7 +114,6 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         # handleLabel={"showCurrentValue": True,"label": "VALUE"},
         updatemode='drag',
         # handleLabel=marks_dict
-        
         # targets = marks_dict,
         # tooltip = { 'always_visible': False },
     ),
@@ -174,12 +173,15 @@ def Add_Dash(server):
 
         fig_toDraw.update_traces(hoverinfo='label+percent', textposition='inside', textinfo='percent+label',  marker=dict(colors=df_toDraw['Color'].tolist(), line=dict(color='#000000', width=2)))
 
-
-
- 
-
         fig_toDraw.update_layout(
             showlegend=False,
+            template=draft_template,
+            annotations=[
+                dict(
+                    templateitemname="draft watermark",
+                    text="www.blackandwhitedata.com",
+                )
+            ],
             title_xanchor="auto",
             height=800,
             margin=dict(
