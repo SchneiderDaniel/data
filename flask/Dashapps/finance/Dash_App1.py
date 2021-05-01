@@ -9,7 +9,8 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors, cite_card, description_card
+from Dashapps.Dash_base import warning_card, colors, cite_card, description_card
+
 import dash_table
 from flask import request
 import locale

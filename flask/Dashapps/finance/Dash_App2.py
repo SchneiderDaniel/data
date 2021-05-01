@@ -12,7 +12,7 @@ import dash_bootstrap_components as dbc
 import plotly.graph_objs as go
 import numpy as np
 import pandas as pd
-from ..Dash_base import warning_card, colors, cite_card, description_card
+from Dashapps.Dash_base import warning_card, colors, cite_card, description_card
 import datetime as dt 
 from ..compute_util.stockinterface import isTickerValid, getCorrelationMatrix, getPortfolioCorrelation,getCorrelationMatrix_List, getPortfolioCorrelation_List, getTickerDataframesList, getTickerDataframe
 from flask import request
