@@ -17,7 +17,7 @@ ADD . /app
 RUN apt-get update
 RUN apt-get -y install locales locales-all
 
-RUN pip install --upgrade pip
+RUN pip install pip==21.0.1
 
 # Install the dependencies
 RUN pip install -r requirements.txt
