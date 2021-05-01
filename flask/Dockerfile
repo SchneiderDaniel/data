@@ -1,5 +1,5 @@
 # Use the Python3.7.2 image
-FROM python:3.9.2-buster
+FROM python:3.9.4-buster
 
 
 

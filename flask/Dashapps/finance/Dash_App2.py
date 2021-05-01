@@ -5,7 +5,6 @@ from dash.dependencies import Input, Output, ALL, State, MATCH, ALLSMALLER, Clie
 from ..Dash_fun import apply_layout_with_auth,apply_layout_without_auth, load_object, save_object
 import dash_core_components as dcc
 import dash_html_components as html
-
 import dash
 import dash_table
 from dash_table.Format import Format, Group, Prefix, Scheme, Symbol
