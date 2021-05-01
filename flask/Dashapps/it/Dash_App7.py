@@ -35,7 +35,7 @@ cite_text = '"The most disastrous thing that you can ever learn is your first pr
 cite_author = "Alan Kay"
 cite_link = "https://en.wikipedia.org/wiki/Alan_Kay"
 
-description_text = ''' On this pie chart you see the most popular programming languages in the past few years with the data pulled from github.'''
+description_text = '''On this pie chart you see the most popular programming languages in the past few years with the data pulled from github.'''
 
 dateparse = lambda x: datetime.strptime(x, '%B %Y')
 
