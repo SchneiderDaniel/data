@@ -36,12 +36,22 @@ draft_template.layout.annotations = [
 ]
 
 def description_card(description_text):
-    return html.Div(
+     
+    children_list =[dcc.Markdown(description_text)]
+    
+    result = html.Div(
         id="description_card",
-        children = [dcc.Markdown(description_text)],
+        children = children_list,
     style={
         'backgroundColor': colors['background'],
     })
+
+    return result
+
+def hint_card(hint_text):
+    if hint_text=="": return html.Br()
+
+    return dbc.Alert("Instructions: " + hint_text, color="primary")
 
 
 

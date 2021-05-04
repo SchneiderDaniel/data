@@ -2,14 +2,14 @@
 
 from dash import Dash
 from dash.dependencies import Input, Output, ALL, State, MATCH, ALLSMALLER, ClientsideFunction
-from ..Dash_fun import apply_layout_with_auth, load_object, save_object
+from Dashapps.Dash_fun import apply_layout_with_auth, load_object, save_object
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from Dashapps.Dash_base import warning_card, colors, cite_card, description_card, draft_template
+from Dashapps.Dash_base import warning_card, colors, cite_card, description_card, draft_template, hint_card
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -33,6 +33,7 @@ cite_text = '"You only live twice: Once when you are born and once when you look
 cite_author = "Ian Fleming"
 cite_link = "https://en.wikipedia.org/wiki/Ian_Fleming"
 description_text = '''In this chart we take a look at the violence of James Bond movies. We define the violence of a movie by the sum of kills that were caused by James Bond himself and others. '''
+hint_text = "With a click on the legend of the figure, your can select which type of kills you want to see."
 
 df = pd.read_csv('app_data/processed/0006.csv', dtype={'Movie': str,'Kills by Bond': int,'Kills of Others': int})
 
@@ -88,6 +89,12 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
     }),
     html.Div(children=cite_card(cite_text,cite_author,cite_link), style={
         'textAlign': 'center',
+        'color': colors['text'],
+        'backgroundColor': colors['background']
+    }),
+    html.Br(),
+    html.Div(children=hint_card(hint_text), style={
+        'textAlign': 'left',
         'color': colors['text'],
         'backgroundColor': colors['background']
     }),

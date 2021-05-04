@@ -2,7 +2,7 @@
 
 from dash import Dash
 from dash.dependencies import Input, Output, ALL, State, MATCH, ALLSMALLER, ClientsideFunction
-from ..Dash_fun import apply_layout_with_auth, load_object, save_object
+from Dashapps.Dash_fun import apply_layout_with_auth, load_object, save_object
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
@@ -12,7 +12,7 @@ import dash_daq as daq
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from ..Dash_base import warning_card, colors, cite_card, description_card
+from Dashapps.Dash_base import warning_card, colors, cite_card, description_card, hint_card
 import dash_table
 from datetime import datetime
 import numpy as np
@@ -33,7 +33,7 @@ cite_text = '""'
 cite_author = ""
 cite_link = ""
 description_text = ''''''
-
+hint_text = ""
 df = pd.read_csv('app_data/processed/0007.csv', parse_dates=['Date'], date_parser=dateparse)
 
 
@@ -57,6 +57,13 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         'color': colors['text'],
         'backgroundColor': colors['background']
     }),
+    html.Br(),
+    html.Div(children=hint_card(hint_text), style={
+        'textAlign': 'left',
+        'color': colors['text'],
+        'backgroundColor': colors['background']
+    }),
+    #add fig here
     html.Br(),
     html.Hr(className="my-2"),
     html.Br(),
