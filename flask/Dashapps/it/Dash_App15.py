@@ -41,6 +41,8 @@ fig = px.bar(df, x='Frequency', y='Character')
 
 fig['layout']['yaxis']['autorange'] = "reversed"
 
+fig.update_traces(marker_color='rgb(160,160,160)', marker_line_color='rgb(8,48,107)',marker_line_width=1.5, opacity=0.6)
+
 fig.update_layout(
     showlegend=False,
     title_xanchor="auto",

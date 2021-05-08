@@ -34,9 +34,39 @@ sourced_date = "05/06/2021"
 cite_text = '"Computer science is not just for smart nerds in hoodies coding in basements. Coding is extremely creative and is an integral part of almost every industry."'
 cite_author = "Reshma Saujani"
 cite_link = "https://en.wikipedia.org/wiki/Reshma_Saujani"
-description_text = '''On this chart you see the length of Hello World Programs in over 600 programming languages. Note, that a break and a space also contributes to the lenght with one.'''
+description_text = '''On this chart you see the length of Hello World Programs in over 600 programming languages (y-axis). Any how many programming languages have a Hello World Program with that length (y-axis). Note, that a break and a space also contributes to the lenght with one.'''
 hint_text = ""
 df = pd.read_csv('app_data/processed/0016.csv')
+
+fig = px.bar(df, x='Length', y='Counts')
+
+fig.update_traces(marker_color='rgb(160,160,160)', marker_line_color='rgb(8,48,107)',marker_line_width=1.5, opacity=0.6)
+
+fig.update_layout(
+    showlegend=False,
+    title_xanchor="auto",
+    height=800,
+    font=dict(
+        size=16
+    ),
+    xaxis=dict(
+        linecolor='black',
+        showticklabels=True,
+        showgrid=True,
+        gridcolor='lightgray',
+    ),
+    paper_bgcolor='rgb(248, 248, 255)',
+    plot_bgcolor='rgb(248, 248, 255)',
+    margin_pad=1,
+    margin=dict(
+        l=0,
+        r=0,
+        b=0,
+        t=20
+    )
+)
+
+
 
 
 # The Layout
@@ -66,6 +96,10 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         'backgroundColor': colors['background']
     }),
     #add fig here
+    dcc.Graph(
+        id='ty-figure',
+        figure=fig
+    ),
     html.Br(),
     html.Hr(className="my-2"),
     html.Br(),
