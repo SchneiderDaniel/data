@@ -49,6 +49,19 @@ fig.update_layout(
     font=dict(
         size=16
     ),
+    annotations=[
+        dict(
+            textangle=-30,
+            opacity=0.1,
+            font=dict(color="black", size=35),
+            xref="paper",
+            yref="paper",
+            x=0.5,
+            y=0.5,
+            showarrow=False,
+            text="www.blackandwhitedata.com",
+        )
+    ],
     xaxis=dict(
         linecolor='black',
         showticklabels=True,
