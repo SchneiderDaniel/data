@@ -1,0 +1,42 @@
+<br>
+<legend class="border-bottom mb-4">Overview</legend>
+
+<div class="card-columns">
+
+    <div class="card" >    
+      <img class="card-img-top" src="{{ url_for('static', filename='images/summary/world.png') }}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Worldwide Data </h5>
+        <p class="card-text">Here you find data analysis from data all around the world.</p>
+        <a href="{{ url_for( 'world_blueprint.world_card_template') }}" class="stretched-link"></a>
+      </div>
+    </div>
+
+    <div class="card" >    
+        <img class="card-img-top" src="{{ url_for('static', filename='images/summary/entertainment.png') }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Entertainment Data </h5>
+          <p class="card-text">Check out data analysis from movies, music, social media, video games and all about enteraintment.</p>
+          <a href="{{ url_for( 'entertain_blueprint.entertain_card_template') }}" class="stretched-link"></a>
+        </div>
+      </div>
+
+      <div class="card" >    
+        <img class="card-img-top" src="{{ url_for('static', filename='images/summary/it.png') }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Computer Science Data </h5>
+          <p class="card-text">In this area we will do data analysis about computer science topics. It might get a bit nerdy, but in a good way.</p>
+          <a href="{{ url_for( 'it_blueprint.it_card_template') }}" class="stretched-link"></a>
+        </div>
+      </div>
+
+      <div class="card" >    
+        <img class="card-img-top" src="{{ url_for('static', filename='images/summary/crypto.png') }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Cryptocurrency Data </h5>
+          <p class="card-text">Interested in some data about cryptocurrencies, the new age of block chain and digital payment? Here you find some data analysis.</p>
+          <a href="{{ url_for( 'crypto_blueprint.crypto_card_template') }}" class="stretched-link"></a>
+        </div>
+      </div>
+
+  </div>
