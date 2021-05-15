@@ -77,6 +77,9 @@ def cite_card(cite_text,cite_author,cite_link):
         ],style={
                        'backgroundColor': colors['superlightgray'],
                        'font-family':'"Poppins", sans-serif',
+                       'font-size' : '20px',
+                       'border-style' : 'outset',
+                       'max-width' : 600
                    },
     )
 def warning_card(data_sources,data_licenses, source_date="<na>"):
