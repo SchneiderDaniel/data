@@ -64,7 +64,6 @@ services:
       - ./wordpress/plugins:/var/www/html/wp-content/plugins
       - ./wordpress/themes:/var/www/html/wp-content/themes
       - ./wordpress/uploads:/var/www/html/wp-content/uploads
-    command: /bin/sh -c "chown www-data:www-data wp-content wp-content/plugins wp-content/themes wp-content/uploads && exec apache2-foreground"
     networks:
       - u-online
 
