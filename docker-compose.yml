@@ -52,7 +52,7 @@ services:
   wordpress:
     image: wordpress:latest
     container_name: wordpress
-    ports:
+    expose:
       - "8000:80"
     restart: always
     depends_on:
