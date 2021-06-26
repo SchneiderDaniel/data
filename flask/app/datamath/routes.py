@@ -7,7 +7,7 @@ from flask_security import login_required, roles_accepted
 @blueprint.route('/pi')
 # @login_required
 def app4_template():
-    return render_template('app4.html', dash_url = Dash_App4.url_base)
+    return render_template('app4.html', dash_url = Dash_App4.url_base, meta_text=Dash_App4.description_text)
 
 @blueprint.route('/overview')
 # @login_required

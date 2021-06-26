@@ -30,18 +30,45 @@ data_licenses = [
 
 sourced_date = "05/17/2021"
 
-cite_text = '""'
-cite_author = ""
-cite_link = ""
-description_text = ''''''
+cite_text = '"All our dreams can come true — if we have the courage to pursue them."'
+cite_author = "Walt Disney"
+cite_link = "https://en.wikipedia.org/wiki/Walt_Disney"
+description_text = '''On this chart you see the Top 20 Disney Movies based on their gross return in dollar, which is adjusted by the inflation. For me the order was quite suprising. For you as well?'''
 hint_text = ""
 df = pd.read_csv('app_data/processed/0017.csv')
+df = df.sort_values('inflation_adjusted_gross', ascending=False)
+df = df.head(20)
+
+fig = px.bar(df, y="movie_title", x="inflation_adjusted_gross", title="Top 20 Disney Movies with the highest gross return (inflation adjusted) ", labels={"movie_title": "Movie Title",  "inflation_adjusted_gross": "Gross Return (inf. adj.)"})
+fig['layout']['yaxis']['autorange'] = "reversed"
+fig.update_layout( legend=dict(
+    orientation="h",
+    yanchor="bottom",
+    y=1.02,
+    xanchor="right",
+    x=1
+),  
+    annotations=[
+        dict(
+            textangle=-30,
+            opacity=0.1,
+            font=dict(color="black", size=35),
+            xref="paper",
+            yref="paper",
+            x=0.5,
+            y=0.5,
+            showarrow=False,
+            text="www.blackandwhitedata.com",
+        )
+    ],
+    height=800,
+    margin={'r': 4,'l':10},yaxis={'visible': True})
 
 
 # The Layout
 layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor': colors['background']}, children=[
     html.H1(
-        children='Most Popular Programming Languages',
+        children='Gross Return of Disney Movies',
         style={
             'textAlign': 'center',
             'color': colors['text'],
@@ -58,6 +85,11 @@ layout = html.Div(style={'font-family':'"Poppins", sans-serif', 'backgroundColor
         'color': colors['text'],
         'backgroundColor': colors['background']
     }),
+    html.Br(),
+    dcc.Graph(
+        id='example-graph-2',
+        figure=fig
+    ),
     html.Br(),
     html.Div(children=hint_card(hint_text), style={
         'textAlign': 'left',

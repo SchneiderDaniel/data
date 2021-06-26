@@ -70,3 +70,4 @@ You need to set the following env. variables.
 [string formattting](https://mkaz.blog/code/python-string-format-cookbook/)
 [dash formatting](https://dash.plotly.com/datatable/data-formatting)
 [year formatting](https://docs.python.org/2/library/datetime.html#strftime-and-strptime-behavior)
+[quotes](https://www.greatest-quotations.com/)

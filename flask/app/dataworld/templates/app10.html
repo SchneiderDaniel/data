@@ -2,6 +2,11 @@
 
 {% block title %} Worldwide Life Expectancy {% endblock title %}
 
+{% block meta %}
+  {{ super() }}
+  <meta name="description" content="{{meta_text}}"/>
+{% endblock meta %} 
+
 {% block stylesheets %}
   {{ super() }}
   <link href="{{ url_for('static', filename='css/dash.css') }}" rel="stylesheet">
